@@ -1,0 +1,64 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Dev_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-dev_code" class="form-control" name="row[dev_code]" type="text" value="{$row.dev_code|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Dev_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-dev_name" class="form-control" name="row[dev_name]" type="text" value="{$row.dev_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Url_hls')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-url_hls" class="form-control " rows="5" name="row[url_hls]" cols="50">{$row.url_hls|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Url_flv')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-url_flv" class="form-control " rows="5" name="row[url_flv]" cols="50">{$row.url_flv|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Url_rtmp')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-url_rtmp" class="form-control " rows="5" name="row[url_rtmp]" cols="50">{$row.url_rtmp|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Buy_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-buy_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[buy_date]" type="text" value="{$row.buy_date}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Factory')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-factory" class="form-control" name="row[factory]" type="text" value="{$row.factory|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agency_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agency_id" data-rule="required" data-source="agency/index" class="form-control selectpage" name="row[agency_id]" type="text" value="{$row.agency_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_bind')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-is_bind" class="form-control" name="row[is_bind]" type="number" value="{$row.is_bind|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

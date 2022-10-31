@@ -1,0 +1,24 @@
+ <div class="panel panel-default panel-intro">
+                            <div class="panel-body">
+                                <div id="myTabContent" class="tab-content">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">数据统计</th>
+                                            <th class="text-center">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {volist name="row" id="vo"}
+                                        <tr>
+                                            <td class="text-center">{$vo}</td>
+                                            <td class="text-center">
+                                                <a href="/JMRIUsnmLz.php/engineering/data/down_excel?id={$project_mon_type_id}&offset={$key}&data_type=1&start_time={$start_time}&end_time={$end_time}&points={$points}" class="btn btn-xs btn-success btn-excel "><i class="fa fa-download"></i> 下载</a>
+                                            </td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>

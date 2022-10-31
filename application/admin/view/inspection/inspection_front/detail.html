@@ -1,0 +1,321 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <h4>基本信息</h4>
+    <input type="hidden" name="row[type]" value="1">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">任务编号:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-id" class="form-control" type="text" name="row[id]" value="{$row['id']}" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">房屋名:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-house_name" class="form-control" type="text" value="{$row['house_name']}" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address" class="form-control" type="text" value="{$address}" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">经纬度:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-lat" class="form-control" type="text" value="{$house['lng'].','.$house['lat']}"
+                disabled="disabled">
+                
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">结构类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-structure" class="form-control" type="text"  name="structure" disabled="disabled">
+                <option value="0" {if condition="$house['structure'] == 0"} selected {/if}  >砖混结构</option>
+                <option value="1" {if condition="$house['structure'] == 1"} selected {/if}  >框架结构</option>
+                <option value="2" {if condition="$house['structure'] == 2"} selected {/if}  >砖木结构</option>
+                <option value="3" {if condition="$house['structure'] == 3"} selected {/if}  >钢结构</option>
+                <option value="4" {if condition="$house['structure'] == 4"} selected {/if}  >木结构</option>
+                <option value="5" {if condition="$house['structure'] == 5"} selected {/if}  >混合结构</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">建筑面积:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-acreage" class="form-control" type="text" value="{$house['acreage']}" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">层数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-total_layer" class="form-control" type="text" value="{$house['total_layer']}"
+                disabled="disabled">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">建造年代:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-year" class="form-control" type="text" value="{$house['year']}" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">房屋备注:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::textarea('row[note]', $row.note, ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">居民反馈:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::textarea('row[feedback]', $row.feedback, ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">保存</button>
+        </div>
+    </div>
+</form>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <h4>巡检报告</h4>
+    <input type="hidden" name="row[type]" value="2">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">巡检开始时间:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_time" class="form-control" type="text" value="{$row['start_time']}" disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">巡检结束时间:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" class="form-control" type="text" value="{$row['end_time']}" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">巡检人:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-join_staff_name" class="form-control" type="text" value="{$row['join_staff_name']}"
+                disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">立面图:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::images('row[elevation]', $row.elevation , ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">房屋情况:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::select('row[house_status]', [0=>'房屋正常', 1=>'房屋已拆除', 2=>'腾空'], $row.house_status ,
+            ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+    <h4>部位巡检</h4>
+
+  
+    <div class="form-group row">
+        <label class="control-label col-xs-12 col-sm-2">1.地基基础</label>
+        <div class="col-xs-12 col-sm-8">
+            <dl class="fieldlist" data-template="part10tpl" data-name="row[part10]">
+                <dd>
+                    <ins>问题</ins>
+                
+                    <ins>立面图</ins>
+                </dd>
+                <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i>
+                    {:__('Append')}</a></dd>
+                <!--请注意 dd和textarea间不能存在其它任何元素，实际开发中textarea应该添加个hidden进行隐藏-->
+                <textarea name="row[part10]" class="form-control" cols="30"
+                          rows="5" style="display:none;">{$part10}</textarea>
+            </dl>
+            <script id="part10tpl" type="text/html">
+                <dd class="form-inline">
+                    <input type="hidden" name="<%=name%>[<%=index%>][inspection_id]" value="{$row.id}" />
+                    <input type="hidden" name="<%=name%>[<%=index%>][type]" value="10" />
+                    <ins style="display: block;margin-top: 15px;">
+                        <textarea type="text" name="<%=name%>[<%=index%>][issue]" class="form-control"
+                               value="<%=row.issue%>" placeholder="问题" style="width: 250px;"><%=row.issue%></textarea></ins>
+            
+                    <ins style="display: block;margin-top: 15px;">
+                        <div class="input-group">
+                            <input id="c-part10_issue_img<%=index%>" data-rule="" class="form-control" size="50"
+                                   name="<%=name%>[<%=index%>][issue_img]" type="text" value="<%=row.issue_img%>"
+                                   placeholder="立面图" style="width: 250px;">
+                            <div class="input-group-addon no-border no-padding">
+                                 <span><button type="button" id="faupload-avatar" class="btn btn-danger plupload"
+                                               data-input-id="c-part10_issue_img<%=index%>"
+                                               data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                               data-multiple="false" data-preview-id="p-part10_issue_img<%=index%>"><i
+                                         class="fa fa-upload"></i>
+                                         {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right" for="c-part3_issue_img<%=index%>"></span>
+                        </div>
+                        <ul style="width: 1000px;" class="row list-inline plupload-preview"
+                            id="p-part10_issue_img<%=index%>"></ul>
+
+                    </ins>
+                    <!--下面的两个按钮务必保留-->
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-danger btn-remove"><i
+                            class="fa fa-times"></i></span>
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-primary btn-dragsort"><i
+                            class="fa fa-arrows"></i></span>
+                </dd>
+            </script>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-xs-12 col-sm-2">2.上部结构</label>
+        <div class="col-xs-12 col-sm-8">
+            <dl class="fieldlist" data-template="part11tpl" data-name="row[part11]">
+                <dd>
+                    <ins>问题</ins>
+                
+                    <ins>立面图</ins>
+                </dd>
+                <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i>
+                    {:__('Append')}</a></dd>
+                <!--请注意 dd和textarea间不能存在其它任何元素，实际开发中textarea应该添加个hidden进行隐藏-->
+                <textarea name="row[part11]" class="form-control" cols="30"
+                          rows="5" style="display:none;">{$part11}</textarea>
+            </dl>
+            <script id="part11tpl" type="text/html">
+                <dd class="form-inline">
+                    <input type="hidden" name="<%=name%>[<%=index%>][inspection_id]" value="{$row.id}" />
+                    <input type="hidden" name="<%=name%>[<%=index%>][type]" value="11" />
+                    <ins style="display: block;margin-top: 15px;">
+                        <textarea type="text" name="<%=name%>[<%=index%>][issue]" class="form-control"
+                                placeholder="问题" style="width: 250px;" ><%=row.issue%></textarea></ins>
+            
+                    <ins style="display: block;margin-top: 15px;">
+                        <div class="input-group">
+                            <input id="c-part11_issue_img<%=index%>" data-rule="" class="form-control" size="50"
+                                   name="<%=name%>[<%=index%>][issue_img]" type="text" value="<%=row.issue_img%>"
+                                   placeholder="立面图" style="width: 250px;">
+                            <div class="input-group-addon no-border no-padding">
+                                 <span><button type="button" id="faupload-avatar" class="btn btn-danger plupload"
+                                               data-input-id="c-part11_issue_img<%=index%>"
+                                               data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                               data-multiple="false" data-preview-id="p-part11_issue_img<%=index%>"><i
+                                         class="fa fa-upload"></i>
+                                         {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right" for="c-part3_issue_img<%=index%>"></span>
+                        </div>
+                        <ul style="width: 1000px;" class="row list-inline plupload-preview"
+                            id="p-part11_issue_img<%=index%>"></ul>
+
+                    </ins>
+                    <!--下面的两个按钮务必保留-->
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-danger btn-remove"><i
+                            class="fa fa-times"></i></span>
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-primary btn-dragsort"><i
+                            class="fa fa-arrows"></i></span>
+                </dd>
+            </script>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-xs-12 col-sm-2">3.围护结构</label>
+        <div class="col-xs-12 col-sm-8">
+            <dl class="fieldlist" data-template="part12tpl" data-name="row[part12]">
+                <dd>
+                    <ins>问题</ins>
+                
+                    <ins>立面图</ins>
+                </dd>
+                <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i>
+                    {:__('Append')}</a></dd>
+                <!--请注意 dd和textarea间不能存在其它任何元素，实际开发中textarea应该添加个hidden进行隐藏-->
+                <textarea name="row[part12]" class="form-control" cols="30"
+                          rows="5" style="display:none;">{$part12}</textarea>
+            </dl>
+            <script id="part12tpl" type="text/html">
+                <dd class="form-inline">
+                    <input type="hidden" name="<%=name%>[<%=index%>][inspection_id]" value="{$row.id}" />
+                    <input type="hidden" name="<%=name%>[<%=index%>][type]" value="12" />
+                    <ins style="display: block;margin-top: 15px;">
+                        <textarea type="text" name="<%=name%>[<%=index%>][issue]" class="form-control"
+                               value="<%=row.issue%>" placeholder="问题" style="width: 250px;" ><%=row.issue%></textarea></ins>
+            
+                    <ins style="display: block;margin-top: 15px;">
+                        <div class="input-group">
+                            <input id="c-part12_issue_img<%=index%>" data-rule="" class="form-control" size="50"
+                                   name="<%=name%>[<%=index%>][issue_img]" type="text" value="<%=row.issue_img%>"
+                                   placeholder="立面图" style="width: 250px;">
+                            <div class="input-group-addon no-border no-padding">
+                                 <span><button type="button" id="faupload-avatar" class="btn btn-danger plupload"
+                                               data-input-id="c-part12_issue_img<%=index%>"
+                                               data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                               data-multiple="false" data-preview-id="p-part12_issue_img<%=index%>"><i
+                                         class="fa fa-upload"></i>
+                                         {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right" for="c-part3_issue_img<%=index%>"></span>
+                        </div>
+                        <ul style="width: 1000px;" class="row list-inline plupload-preview"
+                            id="p-part12_issue_img<%=index%>"></ul>
+
+                    </ins>
+                    <!--下面的两个按钮务必保留-->
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-danger btn-remove"><i
+                            class="fa fa-times"></i></span>
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-primary btn-dragsort"><i
+                            class="fa fa-arrows"></i></span>
+                </dd>
+            </script>
+        </div>
+    </div>
+
+
+
+
+    <h4>房屋评价</h4>
+    <div class="form-group">
+        <div class="col-xs-12 col-sm-8">
+            {:Form::radios('row[house_assess]',[ 0=>'房屋原有危险点未得到彻底修缮，本次学差未发现明显恶化 ',
+            1=>'房屋原有危险点未得到彻底修缮，并有新增或恶化危险点，请主管部门密切关注，必要时对 房屋进行腾空',
+            2=>'房屋存在重大安全隐患，请主管部门及时腾空' ], $row.house_assess, ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">其他问题:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::textarea('row[other]', $row.other, ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<style>
+    .row list-inline plupload-preview li {
+        width: 200px;
+    }
+</style>

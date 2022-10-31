@@ -1,0 +1,19 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <input type="hidden" name="sensor_id" value="{$sensor_id}">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">选择监测内容:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::selectpickers('row[mon_types][]', $mon_type_list, $mon_type_ids)}
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

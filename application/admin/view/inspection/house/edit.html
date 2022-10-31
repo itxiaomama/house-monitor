@@ -1,0 +1,478 @@
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+    }
+
+    .map {
+        height: 100%;
+        width: 100%;
+        float: left;
+        min-height: 200px;
+    }
+
+    #container {
+        min-height: 200px;
+    }
+
+    #tipinput {
+        width: 300px;
+        margin-top: 5;
+        position: absolute;
+        z-index: 9;
+    }
+    ol, ul, li {
+    list-style-type: none;
+    float: left;
+    padding:0;
+}
+      .myTab .active a{
+        color: #46A4FF!important;
+    }
+
+    .myTab {
+        background: #fff;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 50%);
+    position: absolute;
+    z-index: 999;
+    display: none;
+    width: 350px;
+    }
+
+    .TabContent {
+        color: #000;
+        font-size: 14px;
+        min-height: 10px;
+        background-color: #fff;
+        padding: 10px 15px;
+        box-sizing: border-box;
+    }
+
+    .TabContent li {
+        padding: 1%;
+    text-align: left;
+    margin: 1%;
+    /* height: 40px; */
+    line-height: 20px;
+    list-style-type: none;
+    }
+.TabContent li span{
+    cursor:pointer;
+    padding: 1%;
+    text-align: left;
+    margin: 1%;
+    line-height: 20px;
+}
+    .myTab ul {
+        width: 100%;
+    }
+
+    .myTab a {
+        display: inline-block;
+        padding: 0px 22px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid transparent;
+        color: #4D4D4D;
+        text-align: center;
+        outline: 0;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: -1px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .isActive {
+        background-color: #46A4FF;
+        color: #fff;
+        border-radius: 2px;
+    }
+
+    .citytab {
+        border-bottom: 1px solid #ccc;
+        background: #f0f0f0;
+        font-size: 13px;
+        height: 40px;
+        line-height: 40px;
+    }
+</style>
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::select('row[type]', $type , 0, ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Year')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-year" class="form-control" name="row[year]" type="text" value="{$row.year|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Acreage')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-acreage" class="form-control" name="row[acreage]" type="text" value="{$row.acreage|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+        <div class="col-xs-12 col-sm-8">
+        <div id="selectCity" @mouseover="showPicker" @mouseout="hidePicker" @click="showinput">
+            <div style="display:none ;">
+                <input id="c-city" class="form-control"  name="row[province]" v-model="selectProvinceCode" type="text" value="">
+              
+                <input id="c-city" class="form-control"name="row[city]" v-model="selectCityCode" type="text" value="">
+                <input id="c-city" class="form-control"name="row[area]" v-model="selectDistrictCode"type="text" value="">
+                <input id="c-city" class="form-control" name="row[street]" v-model="selectTownshipCode"type="text" value="">
+            </div>
+            <input id="c-city" class="form-control"  type="text" 
+              name="row[cityArr]"  style="width:232px"  value="{$city}" v-if="!show"/>
+              <input id="c-city" class="form-control"  type="text" 
+              name="row[cityArr]"  v-model="cityPicker" style="width:232px"  v-if="show"/>
+
+            <div class="myTab">
+                <ul class="citytab">
+                    <li v-for="(item,index) in navList" :class="{active:!(index- 
+        menuIndex)}" @click='menuShow(index)'>
+                        <a href="#">{{item}}</a>
+                    </li>
+                </ul>
+                <div class="TabContent">
+                    <!-- 遍历lists获取content的值以及index，显示index==num的div，这个num对应的是title的index -->
+                    <div v-show='menuIndex == 0'>
+                        <ul v-for="(item,i) in provinces">
+
+                            <li>
+                                <label v-if="i==='0'">A-G</label>
+                                <label v-else-if="i==='1'">L-S</label>
+                                <label v-else-if="i==='2'">T-Z</label>
+                                <label v-else="i==='3'">H-K</label>
+                                <span v-for="(items,j) in item" :class="{isActive:active[i] === j }"
+                                    @click="getCity(item,i,j)">{{items.name}}</span>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div v-show='menuIndex == 1'>
+                        <ul>
+                            <li style="    white-space: nowrap;"
+                                :class="active2 == index ? 'isActive' : ''"
+                                v-for="(item,index) in citys"><span
+                                    @click="getDistricts(item,index)">{{item.name}}</span></li>
+                        </ul>
+                    </div>
+                    <div v-show='menuIndex == 2'>
+                        <ul>
+                            <li style="    white-space: nowrap;"
+                                :class="active3 == index ? 'isActive' : ''"
+                                v-for="(item,index) in districts">
+                                <span @click="getTownships(item,index)">{{item.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-show='menuIndex == 3'>
+                        <ul>
+                            <li style="    white-space: nowrap;"
+                                :class="active4 == index? 'isActive' : ''"
+                                v-for="(item,index) in Townships">
+                                <span @click="getWLists(item,index)">{{item.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+  
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address" class="form-control" name="row[address]" type="text" value="{$row.address|htmlentities}">
+        </div>
+    </div>
+
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lng')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-lng" class="form-control" name="row[lng]" type="text" value="">
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Structure')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+
+            {:Form::select('row[structure]', $structure , $row.structure, ['data-rule'=>'required'])}
+       
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Total_layer')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-total_layer" class="form-control" name="row[total_layer]" type="text" value="{$row.total_layer|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('On_layer')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-on_layer" class="form-control" name="row[on_layer]" type="text" value="{$row.on_layer|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Un_layer')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-un_layer" class="form-control" name="row[un_layer]" type="text" value="{$row.un_layer|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::select('row[rate]', $rate , 1, ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Use')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-use" class="form-control" name="row[use]" type="text" value="{$row.use|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">经纬度</label>
+        <div class="col-xs-12 col-sm-8">
+            <input class="form-control" name="row[lnglat]" placeholder="搜索地标，移动小红旗以获取建筑物的经纬度" type="text" value="{$row.lng|htmlentities},{$row.lng|htmlentities}"
+                id="lnglat">
+             
+        </div>
+
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+    <input id="tipinput" />
+    <div id='container' v-if="map">
+        <span>X</span>
+    </div>
+    <!-- <div class="info">
+        <h4 id='status'></h4>
+        <hr>
+    </div> -->
+</form>
+
+<script type="text/javascript"
+    src="https://webapi.amap.com/maps?v=1.4.15&key=f2c9b1b2ff56a0f8ff940d5f814d2827&plugin=AMap.DistrictSearch,AMap.Autocomplete,Map3D,AMap.Scale,AMap.MarkerClusterer,AMap.PlaceSearch "></script>
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    new Vue({
+        el: '#selectCity',
+        data: {
+            position: '',
+            map:false,
+            provinces: [],
+            cityPicker: '',
+            selectProvinceCode:'',
+            selectProvince: '',
+            selectCity: '',
+            selectCityCode: '',
+            selectDistrict: '',
+            selectDistrictCode: '',
+            selectTownship: '',
+            selectTownshipCode: '',
+            menuIndex: 0,
+            navList: ['省份', '城市', '区县', '乡镇'],
+
+
+            citys: [],
+            districts: [],
+            Townships: [],
+            active4: -1,
+            active: [],
+            active2: -1,
+            active3: -1,
+            active1: -1,
+            show:false,
+        },
+        mounted() {
+            var that=this
+            var map = new AMap.Map('container', {
+                resizeEnable: true
+            });
+            var autoOptions = {
+                input: "tipinput"
+            };
+            var auto = new AMap.Autocomplete(autoOptions);
+            var placeSearch = new AMap.PlaceSearch({
+                map: map
+            });  //构造地点查询类
+            AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+            function select(e) {
+                placeSearch.setCity(e.poi.adcode);
+                placeSearch.search(e.poi.name);  //关键字查询查询
+            }
+            AMap.plugin('AMap.Geolocation', function () {
+                var geolocation = new AMap.Geolocation({
+                    enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                    timeout: 10000,          //超过10秒后停止定位，默认：5s
+                    buttonPosition: 'RB',    //定位按钮的停靠位置
+                    buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                    zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+
+                });
+                map.addControl(geolocation);
+
+
+                geolocation.getCurrentPosition(function (status, result) {
+
+                    if (status == 'complete') {
+                        onComplete(result)
+                        that.position = result.position
+                        console.log( that.position)
+
+                    }
+                });
+                console.log( that.position)
+                var marker = new AMap.Marker({
+                    position: that.position,
+                    icon: '../../../assets/img/xhq.png',
+                    size: new AMap.Size(25, 25),
+                    offset: new AMap.Pixel(-13, -30),
+                    // 设置是否可拖拽
+                    draggable: true,
+                    cursor: 'move'
+                });
+                marker.on('dragend', function (e) {
+                    document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat()
+                });
+                marker.setMap(map);
+            });
+      
+            $.ajax({
+                type: 'get',
+                url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                dataType: 'json',
+                success: function (res) {
+                    that.provinces = res.data
+                    console.log(res.data)
+                }
+            })
+
+
+        },
+        methods:{
+                menuShow(index) {
+                    this.menuIndex = index
+                },
+                showPicker() {
+                $('.myTab').show()
+               
+                },
+                showinput(){
+                    this.show=true
+                },
+                hidePicker() {
+                        $('.myTab').hide()
+                   
+                    },
+                getCity(item, i, j) {
+                $('.TabContent span').removeClass('isActive')
+                var that = this
+                that.active[i] = j
+                that.selectProvince = item[j].name
+                that.selectProvinceCode = item[j].id
+                $.ajax({
+                    type: 'get',
+                    url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                    dataType: 'json',
+
+                    data: { level: 2, id: item[j].id },
+                    success: function (res) {
+                        that.citys = res.data
+                        that.menuIndex = 1
+                    }
+                })
+
+                },
+
+                getDistricts(item, index) {
+                var that = this
+
+                that.active2 = index
+                that.selectCity = item.name
+                that.selectCityCode = item.id
+            
+                $.ajax({
+                    type: 'get',
+                    url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                    dataType: 'json',
+
+                    data: { level: 3, id: item.id },
+                    success: function (res) {
+                        that.districts = res.data
+                        that.menuIndex = 2
+                    }
+                })
+                },
+                getTownships(item, index) {
+                var that = this
+
+                that.active3 = index
+                that.selectDistrict = item.name
+                that.selectDistrictCode =  item.id
+                $.ajax({
+                    type: 'get',
+                    url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                    dataType: 'json',
+
+                    data: { level: 4, id: item.id },
+                    success: function (res) {
+                        that.Townships = res.data
+                        that.menuIndex = 3
+                    }
+                })
+                },
+                getWLists(item, index) {
+                var that = this
+                that.active4 = index
+                that.selectTownship = item.name
+                that.selectTownshipCode =  item.id
+       
+                that.cityPicker = that.selectProvince + '/' + that.selectCity + '/' + that.selectDistrict + '/' + that.selectTownship
+                $('.myTab').hide()
+
+                },
+
+                        onComplete(data) {
+                                document.getElementById('status').innerHTML = '定位成功'
+                            },
+                        
+                        
+                        },
+                    })
+
+    //解析定位结果
+
+   
+    //解析定位错误信息
+</script>

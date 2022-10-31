@@ -1,0 +1,758 @@
+<!--<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">-->
+
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-name" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <div class='control-relative'><input id="c-city" class="form-control" data-toggle="city-picker" name="row[city]" type="text" value="{$row.city|htmlentities}"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-address" class="form-control" name="row[address]" type="text" value="{$row.address|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Lng')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-lng" class="form-control" name="row[lng]" type="text" value="{$row.lng|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Lat')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-lat" class="form-control" name="row[lat]" type="text" value="{$row.lat|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Start_date')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-start_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[start_date]" type="text" value="{$row.start_date}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Finish_date')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-finish_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[finish_date]" type="text" value="{$row.finish_date}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Monitor_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-monitor_id" data-rule="required" data-source="engineering/engineering/getAgency" data-field="agency_name"	 class="form-control selectpage" name="row[monitor_id]" type="text" value="{$row.monitor_id}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Monitor_staff_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-monitor_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId" data-field="staff_name"	 class="form-control selectpage" name="row[monitor_staff_id]" type="text" value="{$row.monitor_staff_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Safe_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-safe_id" data-rule="required" data-source="engineering/engineering/getAgency" data-field="agency_name"	 class="form-control selectpage" name="row[monitor_id]" type="text" value="{$row.safe_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Safe_staff_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-safe_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId" data-field="staff_name"	 class="form-control selectpage" name="row[safe_staff_id]" type="text" value="{$row.safe_staff_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Supervise_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-supervise_id" data-rule="required" data-source="engineering/engineering/getAgency" data-field="agency_name"	 class="form-control selectpage" name="row[supervise_id]" type="text" value="{$row.supervise_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Supervise_staff_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-supervise_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId" data-field="staff_name"	 class="form-control selectpage" name="row[supervise_staff_id]" type="text" value="{$row.supervise_staff_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Build_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-build_id" data-rule="required" data-source="engineering/engineering/getAgency" data-field="agency_name"	 class="form-control selectpage" name="row[build_id]" type="text" value="{$row.build_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Build_staff_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-build_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId" data-field="staff_name"	 class="form-control selectpage" name="row[build_staff_id]" type="text" value="{$row.build_staff_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Construction_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-construction_id" data-rule="required" data-source="engineering/engineering/getAgency" data-field="agency_name"	 class="form-control selectpage" name="row[construction_id]" type="text" value="{$row.construction_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Construction_staff_id')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-construction_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId" data-field="staff_name"	 class="form-control selectpage" name="row[construction_staff_id]" type="text" value="{$row.construction_staff_id|htmlentities}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Item_map_image')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <div class="input-group">-->
+<!--                <input id="c-item_map_image" class="form-control" size="50" name="row[item_map_image]" type="textarea" value="{$row.item_map_image|htmlentities}">-->
+<!--                <div class="input-group-addon no-border no-padding">-->
+<!--                    <span><button type="button" id="faupload-item_map_image" class="btn btn-danger faupload" data-input-id="c-item_map_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-item_map_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>-->
+<!--                    <span><button type="button" id="fachoose-item_map_image" class="btn btn-primary fachoose" data-input-id="c-item_map_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>-->
+<!--                </div>-->
+<!--                <span class="msg-box n-right" for="c-item_map_image"></span>-->
+<!--            </div>-->
+<!--            <ul class="row list-inline faupload-preview" id="p-item_map_image"></ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Plan_file_file')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            {:Form::upload('row[plan_file_file]', $row.plan_file_file, ['data-rule'=>'required'])}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Bim_file_file')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            {:Form::upload('row[bim_file_file]', $row.bim_file_file, ['data-rule'=>'required'])}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group layer-footer">-->
+<!--        <label class="control-label col-xs-12 col-sm-2"></label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>-->
+<!--            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+
+
+<style>
+    body.is-dialog {
+        background: none;
+    }
+
+    .is-dialog #main {
+        background: none;
+    }
+
+    a {
+        color: #38FFF3;
+    }
+
+    a:hover {
+        color: #fff;
+    }
+
+    #main {
+        height: 100%;
+    }
+
+    #main>.tab-content {
+        height: 100%;
+    }
+
+    #content {
+        height: 100%;
+    }
+
+    #content>.row {
+        height: 100%;
+    }
+
+    #content>.row>.col-xs-12 {
+        height: 100%;
+    }
+
+    #content>.row>.col-xs-12>.content {
+        height: 100%;
+    }
+
+    .input-group-addon {
+        padding: 0px;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1;
+        color: #555555;
+        text-align: center;
+        background: none !important;
+        border: 0px solid #ccc;
+        border-radius: 3px;
+    }
+
+    .panel {
+        background: none;
+        color: #000;
+        border-color: rgba(38, 124, 216, 0.3);
+    }
+
+    .panel-default>.panel-heading {
+        color: #000;
+        background-color: rgba(38, 124, 216, 0.12);
+        border-color: rgba(38, 124, 216, 0.3);
+    }
+
+    .form-control {
+        color: #000;
+        /* background: rgba(16, 110, 149, 0.27); */
+        border: 1px solid #3e626d;
+    }
+
+    .bootstrap-datetimepicker-widget {
+        color: #0C0C0C;
+    }
+
+    .form-control[disabled],
+    .form-control[readonly],
+    fieldset[disabled] .form-control {
+        background: rgba(16, 110, 149, 0.27);
+    }
+
+    option {
+        color: #0C0C0C;
+    }
+
+    .form-group.has-success label {
+        color: #38FFF3;
+    }
+
+    .btn {
+        border: 1px solid #95E7FF;
+    }
+
+    .btn-primary {
+        background: rgba(0, 228, 255, 0.5);
+    }
+
+    .btn-primary:hover,
+    .btn-danger:hover {
+        border: 1px solid #95E7FF;
+    }
+
+    .layui-layer-padding {
+        color: #0C0C0C;
+    }
+
+    .layui-layer {
+        background: #fff;
+        background-size: 100% 100%;
+    }
+
+    .layui-layer-title {
+        background:#fff;
+        background-size: 100% 100%;
+    }
+
+    .layui-layer-footer {
+        background: none !important;
+    }
+
+    .btn-remove,
+    .btn-remove:hover,
+    .btn-remove:active {
+        border-top: 1px solid #95E7FF !important;
+        border-bottom: 1px solid #95E7FF !important;
+        border-radius: 0px;
+        border-left: 0px;
+    }
+    ol, ul, li {
+    list-style-type: none;
+    float: left;
+    padding:0;
+}
+      .myTab .active a{
+        color: #46A4FF!important;
+    }
+
+    .myTab {
+        background: #fff;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 50%);
+    position: absolute;
+    z-index: 999;
+    display: none;
+    top: 100%;
+    width: 350px;
+    }
+
+    .TabContent {
+        color: #000;
+        font-size: 14px;
+        min-height: 10px;
+        background-color: #fff;
+        padding: 10px 15px;
+        box-sizing: border-box;
+    }
+
+    .TabContent li {
+        padding: 1%;
+    text-align: left;
+    margin: 1%;
+    /* height: 40px; */
+    line-height: 20px;
+    list-style-type: none;
+    }
+.TabContent li span{
+    cursor:pointer;
+    padding: 1%;
+    text-align: left;
+    margin: 1%;
+    line-height: 20px;
+}
+    .myTab ul {
+        width: 100%;
+    }
+
+    .myTab a {
+        display: inline-block;
+        padding: 0px 22px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid transparent;
+        color: #4D4D4D;
+        text-align: center;
+        outline: 0;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: -1px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .isActive {
+        background-color: #46A4FF;
+        color: #fff;
+        border-radius: 2px;
+    }
+
+    .citytab {
+        border-bottom: 1px solid #ccc;
+        background: #f0f0f0;
+        font-size: 13px;
+        height: 40px;
+        line-height: 40px;
+    }
+</style>
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            基础信息
+        </div>
+        <div class="panel-body row">
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Name')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-name" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('City')}:</label>
+                <div class="col-xs-12 col-sm-8">
+               
+                        <div id="selectCity"  @mouseover="showPicker" @mouseout="hidePicker">
+                            <input  id="c-city" class="form-control"  type="text" 
+                                placeholder="{$row.city|htmlentities}" name="row[city]" v-model="cityPicker" style="width:232px" value="{$row.city|htmlentities}" />
+
+                            <div class="myTab">
+                                <ul class="citytab">
+                                    <li v-for="(item,index) in navList" :class="{active:!(index- 
+                        menuIndex)}" @click='menuShow(index)'>
+                                        <a href="#">{{item}}</a>
+                                    </li>
+                                </ul>
+                                <div class="TabContent">
+                                    <!-- 遍历lists获取content的值以及index，显示index==num的div，这个num对应的是title的index -->
+                                    <div v-show='menuIndex == 0'>
+                                        <ul v-for="(item,i) in provinces">
+
+                                            <li>
+                                                <label v-if="i==='0'">A-G</label>
+                                                <label v-else-if="i==='1'">L-S</label>
+                                                <label v-else-if="i==='2'">T-Z</label>
+                                                <label v-else="i==='3'">H-K</label>
+                                                <span v-for="(items,j) in item" :class="{isActive:active[i] === j }"
+                                                    @click="getCity(item,i,j)">{{items.name}}</span>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                    <div v-show='menuIndex == 1'>
+                                        <ul>
+                                            <li style="    white-space: nowrap;"
+                                                :class="active2 == index ? 'isActive' : ''"
+                                                v-for="(item,index) in citys"><span
+                                                    @click="getDistricts(item,index)">{{item.name}}</span></li>
+                                        </ul>
+                                    </div>
+                                    <div v-show='menuIndex == 2'>
+                                        <ul>
+                                            <li style="    white-space: nowrap;"
+                                                :class="active3 == index ? 'isActive' : ''"
+                                                v-for="(item,index) in districts">
+                                                <span @click="getTownships(item,index)">{{item.name}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div v-show='menuIndex == 3'>
+                                        <ul>
+                                            <li style="    white-space: nowrap;"
+                                                :class="active4 == index? 'isActive' : ''"
+                                                v-for="(item,index) in Townships">
+                                                <span @click="getWLists(item,index)">{{item.name}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+             
+            </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Address')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-address" class="form-control" name="row[address]" type="text" value="{$row.address|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Lng')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-lng" class="form-control" name="row[lng]" type="text" value="{$row.lng|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Lat')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-lat" class="form-control" name="row[lat]" type="text" value="{$row.lat|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Start_date')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-start_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD"
+                           data-use-current="true" name="row[start_date]" type="text" value="{:$row.start_date}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Finish_date')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-finish_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD"
+                           data-use-current="true" name="row[finish_date]" type="text" value="{:$row.finish_date}">
+                </div>
+            </div>
+            <div  class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">工程范围:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <textarea name="row[lal]"  value="{:$row.lal}" class="form-control" cols="30"
+                    rows="3" >{$row.lal}</textarea>
+                    <span style="color:red">坐标点起始要一致</span>
+                </div>
+          
+            </div>
+            <div  class="form-group col-xs-12 col-sm-6 col-lg-4"></div>
+            <div  class="form-group col-xs-12 col-sm-6 col-lg-4">
+                    <dl class="fieldlist" data-template="part1tpl" data-name="row[lal]">
+                   <!-- <dd>
+                       <ins>问题</ins>
+                       <ins>问题描述</ins>
+                       <ins>立面图</ins>
+                   </dd> -->
+                  
+                   <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i>
+                           追加经纬度</a></dd>
+                   <!--请注意 dd和textarea间不能存在其它任何元素，实际开发中textarea应该添加个hidden进行隐藏-->
+                   <textarea name="row[lal]" class="form-control" cols="30"
+                       rows="5" style="display:none;">{:__('Lal')}</textarea>
+                       
+               </dl>
+               <script id="part1tpl" type="text/html">
+                   <dd class="form-inline">
+                       <ins style="display: block;margin-top: 15px;"><input type="text" name="<%=name%>[<%=index%>][lng]"
+                               class="form-control"
+                               value="<%=row.lng%>" placeholder="经度" style="width: 250px;" /></ins>
+                       <ins style="display: block;margin-top: 15px;"><input type="text" name="<%=name%>[<%=index%>][lat]"
+                                   class="form-control"
+                                   value="<%=row.lat%>" placeholder="纬度" style="width: 250px;" /></ins>
+                                   <span style="margin-top: 15px;" class="btn btn-sm btn-danger btn-remove"><i class="fa fa-times"></i></span>
+                       <!--下面的两个按钮务必保留-->
+                       
+                   </dd>
+               </script>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            相关机构
+        </div>
+
+
+        <div class="panel-body">
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Monitor_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-monitor_id" data-rule="required" data-source="engineering/engineering/getAgency?type=4"
+                           data-field="agency_name"   class="form-control selectpage" name="row[monitor_id]" type="text" value="{$row.monitor_id|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Monitor_staff_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-monitor_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId"
+                           data-field="staff_name" class="form-control selectpage" name="row[monitor_staff_id]" type="text"
+                           value="{$row.monitor_staff_id|htmlentities}">
+                </div>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Safe_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-safe_id" data-rule="required" data-source="engineering/engineering/getAgency"
+                           data-field="agency_name" class="form-control selectpage" name="row[safe_id]" type="text" value="{$row.safe_id|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Safe_staff_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-safe_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId"
+                           data-field="staff_name" class="form-control selectpage" name="row[safe_staff_id]" type="text" value="{$row.safe_staff_id|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Supervise_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-supervise_id" data-rule="required" data-source="engineering/engineering/getAgency?type=1"
+                           data-field="agency_name" class="form-control selectpage" name="row[supervise_id]" type="text" value="{$row.supervise_id|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Supervise_staff_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-supervise_staff_id" data-rule="required"
+                           data-source="engineering/engineering/getStaffByAgencyId" data-field="staff_name"
+                           class="form-control selectpage" name="row[supervise_staff_id]" type="text" value="{$row.supervise_staff_id|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Build_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-build_id" data-rule="required" data-source="engineering/engineering/getAgency?type=2"
+                           data-field="agency_name" class="form-control selectpage" name="row[build_id]" type="text" value="{$row.build_id|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Build_staff_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-build_staff_id" data-rule="required" data-source="engineering/engineering/getStaffByAgencyId"
+                           data-field="staff_name" class="form-control selectpage" name="row[build_staff_id]" type="text" value="{$row.build_staff_id|htmlentities}">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Construction_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-construction_id" data-rule="required" data-source="engineering/engineering/getAgency?type=3"
+                           data-field="agency_name" class="form-control selectpage" name="row[construction_id]" type="text"
+                           value="{$row.construction_id|htmlentities}">
+
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Construction_staff_id')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-construction_staff_id" data-rule="required"
+                           data-source="engineering/engineering/getStaffByAgencyId" data-field="staff_name"
+                           class="form-control selectpage" name="row[construction_staff_id]" type="text" value="{$row.construction_staff_id|htmlentities}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            附件上传
+        </div>
+        <div class="panel-body">
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Item_map_image')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="input-group">
+                        <input id="c-item_map_image" class="form-control" size="50" name="row[item_map_image]" type="textarea" value="{$row.item_map_image|htmlentities}">
+                        <div class="input-group-addon no-border no-padding">
+                            <span><button type="button" id="faupload-item_map_image" class="btn btn-danger faupload"
+                                          data-input-id="c-item_map_image"
+                                          data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false"
+                                          data-preview-id="p-item_map_image"><i class="fa fa-upload"></i>
+                                    {:__('Upload')}</button></span>
+                            <span><button type="button" id="fachoose-item_map_image" class="btn btn-primary fachoose"
+                                          data-input-id="c-item_map_image" data-mimetype="image/*" data-multiple="false"><i
+                                    class="fa fa-list"></i> {:__('Choose')}</button></span>
+                        </div>
+                        <span class="msg-box n-right" for="c-item_map_image"></span>
+                    </div>
+                    <ul class="row list-inline faupload-preview" id="p-item_map_image"></ul>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Plan_file_file')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::upload('row[plan_file_file]', $row.plan_file_file, [])}
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-lg-4">
+                <label class="control-label col-xs-12 col-sm-4">{:__('Bim_file_file')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::upload('row[bim_file_file]', $row.bim_file_file, [])}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+<script>
+   var comName=new Vue({
+                el: '#selectCity',
+
+                data: {
+                    provinces: [],
+                    cityPicker: '',
+                    selectProvince: '',
+                    selectCity: '',
+                    selectDistrict: '',
+                    selectTownship: '',
+                    menuIndex: 0,
+                    navList: ['省份', '城市', '区县', '乡镇'],
+
+
+                    citys: [],
+                    districts: [],
+                    Townships: [],
+                    active4: -1,
+                    active: [],
+                    active2: -1,
+                    active3: -1,
+                    active1: -1,
+
+                },
+                mounted() {
+                    //请求省份数据
+                    var that = this
+                    $.ajax({
+                        type: 'get',
+                        url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                        dataType: 'json',
+                        success: function (res) {
+                            that.provinces = res.data
+                            console.log(res.data)
+                        }
+                    })
+
+
+                },
+                methods: {
+                    menuShow(index) {
+
+                        this.menuIndex = index
+
+                    },
+                    showPicker() {
+                        $('.myTab').show()
+                    },
+                    hidePicker() {
+                        $('.myTab').hide()
+                    },
+                    getCity(item, i, j) {
+                        $('.TabContent span').removeClass('isActive')
+                        var that = this
+                        that.active[i] = j
+                        that.selectProvince = item[j].name
+                        $.ajax({
+                            type: 'get',
+                            url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                            dataType: 'json',
+
+                            data: { level: 2, id: item[j].id },
+                            success: function (res) {
+                                that.citys = res.data
+                                that.menuIndex = 1
+                            }
+                        })
+
+                    },
+
+                    getDistricts(item, index) {
+                        var that = this
+
+                        that.active2 = index
+                        that.selectCity = item.name
+                        $.ajax({
+                            type: 'get',
+                            url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                            dataType: 'json',
+
+                            data: { level: 3, id: item.id },
+                            success: function (res) {
+                                that.districts = res.data
+                                that.menuIndex = 2
+                            }
+                        })
+                    },
+                    getTownships(item, index) {
+                        var that = this
+
+                        that.active3 = index
+                        that.selectDistrict = item.name
+                        $.ajax({
+                            type: 'get',
+                            url: '/JMRIUsnmLz.php/disoop/getAreaInfo',
+                            dataType: 'json',
+
+                            data: { level: 4, id: item.id },
+                            success: function (res) {
+                                that.Townships = res.data
+                                that.menuIndex = 3
+                            }
+                        })
+                    },
+                    getWLists(item, index) {
+                        var that = this
+                        that.active4 = index
+                        that.selectTownship = item.name
+
+                        that.cityPicker = that.selectProvince + '/' + that.selectCity + '/' + that.selectDistrict + '/' + that.selectTownship
+                        $('.myTab').hide()
+
+                    },
+
+                },
+
+            })
+            
+     
+
+</script>
+
+
+

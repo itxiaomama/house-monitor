@@ -1,0 +1,142 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Engineering_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-engineering_id" data-rule="required" data-source="engineering/index" class="form-control selectpage" name="row[engineering_id]" type="text" value="{$row.engineering_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Engineering_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-engineering_name" class="form-control" name="row[engineering_name]" type="text" value="{$row.engineering_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-city" class="form-control" data-toggle="city-picker" name="row[city]" type="text" value="{$row.city|htmlentities}"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address" class="form-control" name="row[address]" type="text" value="{$row.address|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[start_time]" type="text" value="{$row.start_time}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('End_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[end_time]" type="text" value="{$row.end_time}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[time]" type="text" value="{$row.time}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" class="form-control" name="row[status]" type="number" value="{$row.status|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{:$row.create_time?datetime($row.create_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-update_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{:$row.update_time?datetime($row.update_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Join_staff_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-join_staff_name" class="form-control" name="row[join_staff_name]" type="text" value="{$row.join_staff_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Join_staff_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-join_staff_id" data-rule="required" data-source="join/staff/index" class="form-control selectpage" name="row[join_staff_id]" type="text" value="{$row.join_staff_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Super_staff_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-super_staff_id" data-rule="required" data-source="super/staff/index" class="form-control selectpage" name="row[super_staff_id]" type="text" value="{$row.super_staff_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Super_staff_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-super_staff_name" class="form-control" name="row[super_staff_name]" type="text" value="{$row.super_staff_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('House_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-house_id" data-rule="required" data-source="house/index" class="form-control selectpage" name="row[house_id]" type="text" value="{$row.house_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('House_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-house_name" class="form-control" name="row[house_name]" type="text" value="{$row.house_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Note')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-note" class="form-control" name="row[note]" type="text" value="{$row.note|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Feedback')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-feedback" class="form-control" name="row[feedback]" type="text" value="{$row.feedback|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Elevation')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-elevation" class="form-control" name="row[elevation]" type="text" value="{$row.elevation|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('House_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-house_status" class="form-control" name="row[house_status]" type="number" value="{$row.house_status|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Other')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-other" class="form-control" name="row[other]" type="text" value="{$row.other|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('House_assess')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-house_assess" class="form-control" name="row[house_assess]" type="number" value="{$row.house_assess|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

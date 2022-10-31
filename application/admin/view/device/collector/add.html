@@ -1,0 +1,91 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">设备名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-dev_name" data-rule="required" class="form-control" name="row[dev_name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Dev_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-dev_code" data-rule="required" class="form-control" name="row[dev_code]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mod_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::selectpicker('row[mod_id]', $device_model, '', ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Factory')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::selectpicker('row[factory]', $factory, '', ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Channel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-channel" class="form-control" name="row[channel]" type="number" value="0">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Internet_card')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-internet_card" class="form-control" name="row[internet_card]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Buy_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-buy_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[buy_date]" type="text" value="{:date('Y-m-d')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Owe_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-owe_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[owe_date]" type="text" value="{:date('Y-m-d')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Calibrate_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-calibrate_code" class="form-control" name="row[calibrate_code]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Calibrate_agency')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-calibrate_agency" class="form-control" name="row[calibrate_agency]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Issue_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-issue_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[issue_date]" type="text" value="{:date('Y-m-d')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Certificate_file')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-certificate_file" class="form-control" size="50" name="row[certificate_file]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-certificate_file" class="btn btn-danger faupload" data-input-id="c-certificate_file" data-multiple="false" data-preview-id="p-certificate_file"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-certificate_file" class="btn btn-primary fachoose" data-input-id="c-certificate_file" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-certificate_file"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-certificate_file"></ul>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,224 @@
+<!-- <div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <a href="javascript:;" class="btn btn-success btn-add {:$auth->check('inspection/house_front/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+                        <a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled {:$auth->check('inspection/house_front/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('inspection/house_front/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-import {:$auth->check('inspection/house_front/import')?'':'hide'}" title="{:__('Import')}" id="btn-import-file" data-url="ajax/upload" data-mimetype="csv,xls,xlsx" data-multiple="false"><i class="fa fa-upload"></i> {:__('Import')}</a>
+
+                        <div class="dropdown btn-group {:$auth->check('inspection/house_front/multi')?'':'hide'}">
+                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> {:__('More')}</a>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> {:__('Set to normal')}</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> {:__('Set to hidden')}</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('inspection/house_front/edit')}"
+                           data-operate-del="{:$auth->check('inspection/house_front/del')}"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+<div id="app">
+    <div class="input_box" v-cloak>
+        <div class="house_name">
+            <!-- <span>建筑名</span> -->
+            <input @input="changeInput()" v-model="house_name" placeholder="请输入建筑物名、地址进行搜索" type="text">
+        </div>
+        <!-- <div class="house_address"> -->
+            <!-- <span>建筑地址</span> -->
+            <!-- <input v-model="house_address" placeholder="建筑地址" type="text"> -->
+        <!-- </div> -->
+        <div class="buttom_box">
+            <div class="Sure" @click="Search()">搜索</div>
+            <!-- <div class="Clear" @click="Clear()">清空</div> -->
+        </div>
+    </div>
+    <div class="box">
+
+        <!-- <div class="top_box">
+            <span v-cloak>{{title}}</span>
+            <button class="serch" @click="InputShow()" title=" 搜索"><i class="glyphicon glyphicon-search"></i></button>
+        </div> -->
+        <div class="Content">
+            <div class="Content_small" v-for="(item, index) in Data">
+                <a :href="'/JMRIUsnmLz.php/inspection/house_front/detail/ids/'+item.id">
+                    <div class="Address" v-cloak>{{item.name}}</div>
+                    <div class="Date" v-cloak>年份:{{item.year}}</div>
+                    <div class="Address_small" v-cloak>地址:{{item.city}}{{item.address}}</div>
+                </a>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    .Address_small {
+        margin-top: 10px;
+    }
+
+    .content {
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
+    }
+
+    .row {
+        margin: 0 0 0 0 !important;
+    }
+
+    [v-cloak] {
+        opacity: 0;
+    }
+
+    #app {
+        width: 100%;
+        height: 100%;
+    }
+
+    .box {
+        width: 100%;
+        height: 650px;
+        overflow: auto;
+        margin-top: 8%;
+    }
+
+    .top_box {
+        background-color: #000;
+        height: 40px;
+        width: 113%;
+        margin-left: -20px;
+        position: relative;
+        left: 40%;
+        font-size: 18px;
+        color: #fff;
+        top: 15%;
+    }
+
+    .top_box span {
+        position: relative;
+        left: 40%;
+        font-size: 18px;
+        color: #fff;
+        position: relative;
+        left: 66%;
+        background-color: transparent;
+        outline: none;
+        color: #fff;
+        border: none;
+        top: 15%;
+    }
+
+    .aa {
+        display: none !important;
+    }
+
+    .top_box button {
+        position: relative;
+        left: 66%;
+        background-color: transparent;
+        outline: none;
+        color: #fff;
+        border: none;
+        top: 15%;
+    }
+
+    .input_box {
+        height: 50px;
+        width: 100%;
+        position: relative;
+        /* left: -15px; */
+        /* top: -15px; */
+        background-color: #2C3A47;
+    }
+
+    .house_name span {
+        letter-spacing: 6px;
+    }
+    .house_name input {
+    width: 215px;
+    }
+
+    .house_address {
+        margin-left: 5%;
+        margin-top: 4%;
+    }
+
+    .house_address input {
+        margin-left: 6px;
+    }
+
+    .buttom_box {
+        position: absolute;
+        right: 5%;
+        top: 41%;
+    }
+
+    .Sure {
+        height: 25px;
+        border: 1px solid #181f23;
+        border-radius: 2px;
+        width: 55px;
+        text-align: center;
+        margin-top: -18%;
+        line-height: 21px;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .Clear {
+        height: 20px;
+        border: 1px solid #181f23;
+        border-radius: 2px;
+        width: 40px;
+        text-align: center;
+        margin-top: 40%;
+    }
+
+    .house_name {
+        position: absolute;
+        top: 23%;
+        left: 4%;
+    }
+
+    .Content {
+        height: 100%;
+        width: 95%;
+        margin-left: 9px;
+    }
+
+    .Content_small {
+        height: 100px;
+        width: 100%;
+        position: relative;
+    }
+
+    .Address {
+        font-size: 16px;
+        color: #000;
+        font-weight: 900;
+        margin-top: 20px;
+    }
+
+    .Date {
+        color: #000;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+
+</style>

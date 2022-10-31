@@ -1,0 +1,187 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">
+            <span style="color:red">*</span>
+            {:__('Agency_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agency_name" data-rule="required" class="form-control" name="row[agency_name]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-city" class="form-control" data-toggle="city-picker" name="row[city]" type="text" ></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address" class="form-control" name="row[address]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agency_category_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::selectpicker('row[agency_category_id]', $categoryList, '', ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lng')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="button" class="btn btn-primary" data-toggle='addresspicker' data-input-id="address" data-lng-id="c-lng" data-lat-id="c-lat">点击选择地址获取经纬度</button>
+            <input id="c-lng" data-rule="required" class="form-control" name="row[lng]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-lat" data-rule="required" class="form-control" name="row[lat]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tel" data-rule="required" class="form-control" name="row[tel]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Corporate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-corporate" class="form-control" name="row[corporate]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Register_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-register_num" class="form-control" name="row[register_num]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Register_capital')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-register_capital" class="form-control" name="row[register_capital]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Register_auth')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-register_auth" class="form-control" name="row[register_auth]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Issue_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-issue_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[issue_date]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Business_scope')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-business_scope" class="form-control " rows="5" name="row[business_scope]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Monitor_cert_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-monitor_cert_num" class="form-control" name="row[monitor_cert_num]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Monitor_cert_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-monitor_cert_image" class="form-control" size="50" name="row[monitor_cert_image]" type="text" >
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-monitor_cert_image" class="btn btn-danger faupload" data-input-id="c-monitor_cert_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-monitor_cert_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-monitor_cert_image" class="btn btn-primary fachoose" data-input-id="c-monitor_cert_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-monitor_cert_image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-monitor_cert_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Monitor_start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-monitor_start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[monitor_start_time]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Monitor_end_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-monitor_end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[monitor_end_time]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Survey_cert_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-survey_cert_num" class="form-control" name="row[survey_cert_num]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Survey_cert_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-survey_cert_image" class="form-control" size="50" name="row[survey_cert_image]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-survey_cert_image" class="btn btn-danger faupload" data-input-id="c-survey_cert_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-survey_cert_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-survey_cert_image" class="btn btn-primary fachoose" data-input-id="c-survey_cert_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-survey_cert_image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-survey_cert_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Survey_start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-survey_start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[survey_start_time]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Survey_end_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-survey_end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[survey_end_time]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Map_cert_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-map_cert_num" class="form-control" name="row[map_cert_num]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Map_cert_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-map_cert_image" class="form-control" size="50" name="row[map_cert_image]" type="text" >
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-map_cert_image" class="btn btn-danger faupload" data-input-id="c-map_cert_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-map_cert_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-map_cert_image" class="btn btn-primary fachoose" data-input-id="c-map_cert_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-map_cert_image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-map_cert_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Map_start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-map_start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[map_start_time]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Map_end_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-map_end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[map_end_time]" type="text" >
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

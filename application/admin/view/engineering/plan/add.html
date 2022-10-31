@@ -1,0 +1,49 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><span class="text-red"> * </span> 方案名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-plan_name" data-rule="required" class="form-control" name="row[plan_name]" type="text" autocomplete="off">
+        </div>
+    </div>
+    <div data-toggle="cxselect" data-selects="first">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2"><span class="text-red"> * </span> 监测类型:</label>
+            <div class="col-xs-12 col-sm-8">
+                <select class="first form-control" name="row[mon_type]" data-url="engineering/plan/mon_type?id=" id="mon-type"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" id="ous_day">连续xx天:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ous_day" class="form-control" name="row[ous_day]" type="number" value="" placeholder="可不填">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><span class="text-red"> * </span> 警情设置:</label>
+        <div id="msg-alarm"></div>
+        <div class="col-xs-12 col-sm-8">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="text-center">对象</th>
+                    <th class="text-center" style="min-width: 50px;">开启</th>
+                    <th class="text-center">预警</th>
+                    <th class="text-center">报警</th>
+                    <th class="text-center">控制</th>
+                </tr>
+                </thead>
+                <tbody id="plan-alarm">
+
+                <!--连续多少天-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <div style="margin: auto;text-align: center">
+            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+            <button type="button" class="btn btn-primary btn-embossed layer-close">取消</button>
+        </div>
+    </div>
+</form>

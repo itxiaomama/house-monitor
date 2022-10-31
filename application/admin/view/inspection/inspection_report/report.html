@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://47.97.97.0:7777/houseMonitor/report/report.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <divnk rel="stylesheet" type="text/css" href="__CDN__/assets/css/inspection_report/index.css" />
+
+    <style>
+        .div-inline {
+            display: inline-block;
+        }
+
+        .div0 {
+            width: 700px;
+            min-height: 1046px;
+            padding: 10px;
+            margin-top: 0px;
+            background-color: white;
+            position: relative;
+        }
+
+        .div1 {
+            width: 680px;
+            text-align: center;
+            z-index: 1;
+
+        }
+
+
+
+        .div31 {
+            width: 460px;
+            padding: 2px;
+            z-index: 1;
+            /* display: flex; */
+            /* align-items: center; */
+            /* justify-content: center; */
+        }
+
+        .div32 {
+            z-index: 1;
+            width: 55%;
+            padding: 1px;
+            float: right;
+        }
+
+        .div7 {
+            width: 680px;
+            z-index: 9999;
+        }
+
+        ul {
+
+            list-style: none;
+            padding-left: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .ul-330 {
+            width: 330px;
+        }
+
+        .ul-680 {
+            width: 680px;
+        }
+
+        .border-UpDown {
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .border-Up {
+            border-top: 1px solid #000!important;
+        }
+
+        /* .border-Up span{
+            padding-left:2%;
+        } */
+
+        .body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            overflow-y: auto;
+
+        }
+
+        .aa {
+            display: none !important;
+        }
+
+        #content_3_0>table>td>img {
+            width: 33%;
+        }
+        #print{
+            position: fixed;
+            z-index: 999;
+            top: 8%;
+            right: 52%;
+            background: #181f23;
+            color: #fff;
+            width: 80px;
+            height: 40px;
+        }
+        #print:hover{
+            background: #575d61;
+        }
+        #content_3_0 ul li{
+            list-style: none;
+        }
+        .spandiv{
+            margin: auto!important;
+            display: block!important;
+            font-size: 16px!important;
+            font-weight: 600!important;
+            text-align: center!important;
+        }
+        .div2{
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body class="ruofeng-body body">
+    
+    <div id="app" style="width: 700px;">
+        <div class="mu-paper  mu-paper-round" style="position: absolute; top: 0px;">
+
+            {foreach name="data" item="val" key="key" }
+            <mu-template>
+                <button id="print">打印</button>
+                <div class="div0" id="div0">
+                    <div id="head_0" class="mu-paper div1 mu-paper-round"><span
+                            style="font-size: 20px;"><b>【{$val['house']['name']}】巡检报告</b></span></div>
+                    <!-- <div class="div1"><img src="{$admin.avatar|cdnurl|htmlentities}" width="40px"
+                            style="float: left; margin-top: -40px;"></div> -->
+                    <div class="div1"><span style="float: right; margin-top: -20px;">编号：{$val.house.id}</span></div>
+                    <div id="content_1_0" class="border-Up div3" style="min-height: 340px;">
+                        <div id="headerImg_0" style="float:left">
+
+                            <div class="div-inline" style="padding: 2px;">
+                                <div
+                                    style="overflow: hidden; position: relative; top: 0px; left: 0px; width: 300px; height: 270px;">
+                                    <img src="{$val['elevation']}"
+                                        style="position: absolute; inset: 0px; max-width: 100%; margin: auto;">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div contenteditable="true" id="houseInfo_0" class="div32 div-inline">
+                            <table class='houseTable' border="1" cellspacing="0" style="line-height: 2.5;text-align: center;">
+                                <tr rowspan="10">
+                                    <th rowspan="10" width="50" style="text-align: center;">房屋概况</th>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd" width="200">房屋名称</td>
+                                    <td width="500">{$val['house']['name']}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd">房屋地址</td>
+                                    <td>{$val.house.super_address}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd">房屋用途</td>
+                                    <td>{$val['house']['use']}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd">建造年代</td>
+                                    <td>{$val['house']['year']}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd">结构类型</td>
+                                    <td>{$val.house.structure}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd">层数</td>
+                                    <td>{if condition = " !empty($val['house']['on_layer']) "
+                                        }地上{$val['house']['on_layer']}层;{/if}
+                                        {if condition = " !empty($val['house']['un_layer']) "
+                                        }地下{$val['house']['un_layer']}层;{/if}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd">建筑面积</td>
+                                    <td>{$val.house.acreage}㎡</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ddd">鉴定等级</td>
+                                    <td>{$val.house.rate}</td>
+                                </tr>
+                            </table>
+                          
+                        </div>
+                    </div>
+                    <div contenteditable="true" id="content_2_0" 
+                        style="max-height: 168px; font-size: 12px;">
+                        <div style="border-bottom:1px solid #000">
+                           <b>住户反馈问题：</b>无
+                      
+                    </div>
+                    <div id="content_3_0" class="div-inline border-Up div7">
+              
+                            <span style="font-size: 16px;font-weight: 600;" class="spandiv">本月房屋隐患</span>
+                            <div>
+                                <div class="div2">地基基础：</div>
+                                {foreach name="val['arr']['part10']" item="vt12" key="kt2" } 
+                                <div>
+                                    {$kt2+1}、 {$vt12['issue']}
+                                </div>
+                                {/foreach}
+                                <div style="    border-top: 1px dashed #ddd;
+                                padding: 2%;"> {foreach name="val['arr']['part10']" item="vt2" key="kt2" }  
+                                    <img src="{$vt12.issue_img}" style="height:200px;width: 200px;"> 
+                                {/foreach} </div>
+                            </div>
+                            <div>
+                                <div class="div2">上部结构：</div>
+                                {foreach name="val['arr']['part11']" item="tt12" key="ot2" }
+                                <div>
+                                    {$ot2+1}、 {$tt12['issue']}
+                                </div>
+                                {/foreach}
+                                <div style="    border-top: 1px dashed #ddd;
+                               padding: 2%;">  {foreach name="val['arr']['part11']" item="tt12" key="ot2" }  
+                                    <img src="{$tt12.issue_img}" style="height:200px;width: 200px;"> 
+                                {/foreach} </div>
+                            </div>
+                            <div style="border-bottom:1px solid #000">
+                                <div class="div2">围护结构：</div>
+                                {foreach name="val['arr']['part12']" item="st12" key="yt2" }
+                                <div>
+                                    {$yt2+1}、 {$st12['issue']}
+                                </div>
+                                {/foreach}
+                                <div style="    border-top: 1px dashed #ddd;
+                               padding: 2%;">   {foreach name="val['arr']['part12']" item="st12" key="yt2" }
+                                    <img src="{$st12.issue_img}" style="height:200px;width: 200px;"> 
+                                {/foreach} </div>
+                            </div>
+                            <div>
+                                <span style="font-size: 16px;font-weight: 600;" class="spandiv">上月房屋隐患</span>
+                                <div class="div2">地基基础：</div>
+                                {foreach name="val['last']['part10']" item="vt2" key="kt2" } 
+                                <div>
+                                    {$kt2+1}、 {$vt2['issue']}
+                                </div>
+                                {/foreach}
+                                 <div style="    border-top: 1px dashed #ddd;
+                               padding: 2%;"> {foreach name="val['last']['part10']" item="vt2" key="kt2" }  
+                                    <img src="{$vt2.issue_img}" style="height:200px;width: 200px;"> 
+                                {/foreach} </div>
+                            </div>
+                            <div>
+                                 <div class="div2">上部结构：</li>
+                                {foreach name="val['last']['part11']" item="tt2" key="ot2" }
+                                <div>
+                                    {$ot2+1}、 {$tt2['issue']}
+                                </div>
+                                {/foreach}
+                                 <div style="    border-top: 1px dashed #ddd;
+                               padding: 2%;">  {foreach name="val['last']['part11']" item="tt2" key="ot2" }  
+                                    <img src="{$tt2.issue_img}" style="height:200px;width: 200px;"> 
+                                {/foreach} </div>
+                            </div>
+                            <div>
+                                
+                                 <div class="div2">围护结构：</li>
+                                {foreach name="val['last']['part12']" item="st2" key="yt2" }
+                                <div>
+                                    {$yt2+1}、 {$st2['issue']}
+                                </div>
+                                {/foreach}
+                                 <div style="    border-top: 1px dashed #ddd;
+                                padding: 2%;">   {foreach name="val['last']['part12']" item="st2" key="yt2" }
+                                    <img src="{$st2.issue_img}" style="height:200px;width: 200px;"> 
+                                {/foreach} </div>
+                            </div>
+                           
+
+                    </div>
+                    <div id="bottom_1_0" >
+                        <div>
+                            <span style="font-size: 16px;">评价：
+                                {if condition="$val['row']['house_assess'] == 0"} 本次未发现明显恶化
+                                {elseif condition="$val['row']['house_assess'] == 1"/}有新增或恶化危险点，请主管部门密切关注，必要时对房屋进行腾空
+                                {elseif condition="$val['row']['house_assess'] == 2"/}房屋存在重大安全隐患，请主管部门及时腾空
+                                {else /}未定义
+                                {/if}
+                            </span>
+                        </div>
+                        <br><span style="font-size: 16px;">备注：{$val.row.note}</span>
+                    </div>
+                    <div contenteditable="true" id="bottom_2_0" class="border-Up" style="text-align:left; ">
+                        <br> <span>
+                            巡检日期：{$val['row']['update_time']} </span>
+                         <span>巡检人：{$val['row']['join_staff_name']}</span><span>
+                            审批人：{$val.row.super_staff_name}</span>
+                            <br><span>巡检周期：{$val['row']['start_time']}~{$val['row']['end_time']}</span>
+                    </div>
+                </div>
+            </mu-template>
+            {/foreach}
+        </div>
+    </div>
+
+    <!-- </mu-container> -->
+    <!-- 引入组件 -->
+    <script src="__CDN__/assets/js/backend/inspection/inspection_report/vue.min.js"></script>
+    <script src="__CDN__/assets/js/backend/inspection/inspection_report/axios.min.js"></script>
+    <script src="__CDN__/assets/js/backend/inspection/inspection_report/muse-ui.js"></script>
+    <script src="__CDN__/assets/js/backend/inspection/inspection_report/muse-ui-message.js"></script>
+    <script src="__CDN__/assets/js/backend/inspection/inspection_report/muse-ui-toast.js"></script>
+    <script src="__CDN__/assets/js/backend/inspection/inspection_report/report.js"></script>
+
+
+
+</body>
+<script>
+           window.onload = function()  
+        {  
+            var btnPrint = document.getElementById("print");//“打印”按钮  
+            btnPrint.onclick = function()//为“打印”按钮添加点击事件  
+            {  
+                printTable();//打印表格  
+            }  
+        }
+        function printTable()  
+        {  
+            var tableToPrint = document.getElementById('div0');//将要被打印的表格  
+            var newWin= window.open("");//新打开一个空窗口  
+            newWin.document.write(tableToPrint.outerHTML);//将表格添加进新的窗口  
+            newWin.document.close();//在IE浏览器中使用必须添加这一句  
+            newWin.focus();//在IE浏览器中使用必须添加这一句  
+            newWin.print();//打印  
+            newWin.close();//关闭窗口  
+        }  
+</script>
+
+</html>

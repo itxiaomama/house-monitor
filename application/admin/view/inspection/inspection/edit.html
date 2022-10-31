@@ -1,0 +1,92 @@
+<style>
+  #type select,button{
+    pointer-events: none; 
+  } 
+ 
+</style>
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">任务名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::text('row[name]', $row.name, ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" readonly="" data-use-current="true" name="row[start_time]" type="text" value="{$row.start_time|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('End_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" readonly="" data-use-current="true" name="row[end_time]" type="text" value="{$row.end_time|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">巡检类型:</label>
+        <div class="col-xs-12 col-sm-8" id="type">
+            {:Form::select('row[type]', $type,$row.type,['id'=>'type'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">选择工程:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::selectpicker('row[engineering_id]', $engineering_list,$row.engineering_id,['id'=>'engineering_id'])}
+        </div>
+    </div>
+
+
+    <div class="form-group" id="project_all">
+        <label class="control-label col-xs-12 col-sm-2">选择项目:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-project_id" data-rule="required" data-source="inspection/inspection/getProjectByEngId"
+                   data-field="item_name" class="form-control selectpage" name="row[project_id]" type="text"  readonly="" value="{$row.project_id|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group" id="point_all">
+        <label class="control-label col-xs-12 col-sm-2">选择测点:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-point_id" data-rule="required" data-source="inspection/inspection/getPointByProId"
+                   data-field="point_code" class="form-control selectpage" name="row[point_id]" type="text"  readonly="" value="{$row.point_id|htmlentities}">
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">选择建筑物:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input  class="form-control" name="row[house_name]" type="text"  id="house-name" value="{$row.house_name|htmlentities}"   readonly="" placeholder="选择房屋">
+            <input  class="form-control" name="row[house_id]" id="house-id"  type="hidden"   value="{$row.house_id|htmlentities}">
+        
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">巡检人员:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::select('row[join_staff_id]', $staff_list, $row.join_staff_id, ['data-rule'=>'required','id'=>'join_staff_id'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">监督人员:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::select('row[super_staff_id]', $staff_list,  $row.super_staff_id, ['data-rule'=>'required','id'=>'super_staff_id'])}
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-submit btn-embossed">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,50 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">方案名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input class="form-control" type="text" value="{$row['plan_name']}" readonly="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">监测类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input class="form-control" type="text" value="{$row['mon_type_name']}" readonly="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">警情设置:</label>
+        <div id="msg-alarm"></div>
+        <div class="col-xs-12 col-sm-8">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="text-center">对象</th>
+                    <th class="text-center" style="min-width: 50px;">开启</th>
+                    <th class="text-center">预警</th>
+                    <th class="text-center">报警</th>
+                    <th class="text-center">控制</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $plan_alarm as $vo}
+                <tr>
+                    <td>{$vo.item_name}</td>
+                    <td class="text-center">
+                        <i class="fa fa-toggle-on text-success fa-2x {if condition="($vo.state == 0)"} fa-flip-horizontal text-gray{/if} "></i>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" value="{$vo.warn}" readonly="">
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" value="{$vo.error}" readonly="">
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" value="{$vo.control}" readonly="">
+                    </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,13 @@
+diff a/public/assets/js/backend/inspection/inspection.js b/public/assets/js/backend/inspection/inspection.js	(rejected hunks)
+@@ -127,6 +127,11 @@
+                 },
+             }
+         },
++        skus: function () {
++            $(document).on("click", ".btn-append", function () {
++                Form.events.plupload("#add-form");
++            });
++            Controller.api.bindevent();
+         },
+     };
+     return Controller;

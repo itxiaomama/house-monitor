@@ -1,0 +1,186 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <input type="hidden" name="project_mon_type_id" value="{$project_mon_type_id}">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Point_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-point_code" class="form-control" name="row[point_code]" type="text" data-rule="required" >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('采集仪编号')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            {:Form::select('row[dev_id]', $controller, '', ['data-rule'=>'required','id'=>'dev_id'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('传感器类型')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::select('row[sensor_id]', $sensor, '', ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+    {if condition="$company_id == 2"}
+
+    <div id="companyZH">
+        <div class="form-group" id="addr_all">
+            <label class="control-label col-xs-12 col-sm-2"  id="addr_name">{:__('Addr')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-addr" class="form-control" name="row[addr]" type="text" value=""   data-rule="required" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2" id="card_name">{:__('Card')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-card" class="form-control" name="row[card]" type="number" value="" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2" id="port_name">{:__('Port')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-port" class="form-control" name="row[port]" type="number" value="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2" id="lng">{:__('Lng')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-lng" class="form-control" name="row[lng]" type="number" value="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2" id="lat">{:__('Lat')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-lat" class="form-control" name="row[lat]" type="number" value="">
+            </div>
+        </div>
+
+    </div>
+    {/if}
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" id="ous_day">连续xx天:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ous_day" class="form-control" name="row[ous_day]" type="number" value="{$ous_day}" placeholder="可不填">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" id="is_test">模拟测点:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select name="row[is_test]" id="" class="form-control">
+                <option value="0">请选择</option>
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
+    </div>
+
+    {if condition="$company_id == 3"}
+    <div class="addNameId">
+        <div class="addNameId-from">
+            <div class="form-group" style="display: flex;align-items: center;">
+                <label class="control-label col-xs-3 col-sm-2"  id="name">变量名:</label>
+                <div class="col-xs-9 col-sm-8">
+                    <input id="deviceNo" class="form-control" name="row[deviceNo][]" type="text" value="" data-rule="required" >
+                </div>
+                <label class="control-label col-xs-1 col-sm-2"  id="id">id:</label>
+                <div class="col-xs-11 col-sm-8">
+                    <input id="dataPointId" class="form-control" name="row[dataPointId][]" type="text" value="" data-rule="required" >
+                </div>
+            </div>
+        </div>
+        <div><button type="submit" id="addDevic" class="btn btn-success btn-embossed" style="width: 50%;margin-left: 25%;">添加</button></div>
+    </div>
+    {/if}
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><span class="text-red"> * </span> 警情设置:</label>
+        <div id="msg-alarm"></div>
+        <div class="col-xs-12 col-sm-8">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="text-center">对象</th>
+                    <th class="text-center" style="min-width: 50px;">开启</th>
+                    <th class="text-center">预警</th>
+                    <th class="text-center">报警</th>
+                    <th class="text-center">控制</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {if condition="$plan_id == 0"}
+                    {foreach name="alarmSet" item="vo" key="ko" }
+                    <tr>
+                        <td>{$vo}</td>
+                        <td class="text-center">
+                            <input id="c-{$ko}" name="alarm[state_{$ko}]" type="hidden" value="0">
+                            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-{$ko}" data-yes="1" data-no="0">
+                                <i class="fa fa-toggle-on text-success fa-2x fa-flip-horizontal text-gray"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <input class="form-control" name="alarm[warn_{$ko}]" type="number" data-target="#msg-alarm" value="0">
+                        </td>
+                        <td>
+                            <input class="form-control" name="alarm[error_{$ko}]" type="number" data-target="#msg-alarm" value="0">
+                        </td>
+                        <td>
+                            <input class="form-control" name="alarm[control_{$ko}]" type="number" data-target="#msg-alarm" value="0">
+                        </td>
+                    </tr>
+                    {/foreach}
+                {else /}
+<!--                    有报警方案的话-->
+                    {foreach name="$plan_alarm" item="vo" key="ko" }
+                    <tr>
+                        <td>{$vo.item_name}</td>
+                        <td class="text-center">
+                            <input id="c-{$vo.item}" name="alarm[state_{$vo.item}]" type="hidden" value="{$vo.state}">
+                            <input name="alarm[id_{$vo.item}]" type="hidden"  value="{$vo.id}">
+
+                            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-{$vo.item}" data-yes="1" data-no="0">
+                                <!--                            <i class="fa fa-toggle-on text-success fa-2x fa-flip-horizontal text-gray"></i>-->
+                                <i class="fa fa-toggle-on text-success fa-2x {if condition="($vo.state == 0)"} fa-flip-horizontal text-gray{/if} "></i>
+                            </a>
+                        </td>
+                        <td>
+                            <input class="form-control" name="alarm[warn_{$vo.item}]" type="number" data-target="#msg-alarm" value="{$vo.warn}">
+                        </td>
+                        <td>
+                            <input class="form-control" name="alarm[error_{$vo.item}]" type="number" data-target="#msg-alarm" value="{$vo.error}">
+                        </td>
+                        <td>
+                            <input class="form-control" name="alarm[control_{$vo.item}]" type="number" data-target="#msg-alarm" value="{$vo.control}">
+                        </td>
+                    </tr>
+                    {/foreach}
+                {/if}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

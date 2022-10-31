@@ -1,0 +1,71 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><span class="text-red"> * </span> 方案名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-plan_name" data-rule="required" class="form-control" name="row[plan_name]" type="text" value="{$row.plan_name|htmlentities}" autocomplete="off">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('监测类型')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::select('row[mon_type_id]', $mon_type, $row.mon_type_id, ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" id="ous_day">连续xx天:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ous_day" class="form-control" name="row[ous_day]" type="number" value="{$row.ous_day|htmlentities}" >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><span class="text-red"> * </span> 警情设置:</label>
+        <div id="msg-alarm"></div>
+        <div class="col-xs-12 col-sm-8">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="text-center">对象</th>
+                    <th class="text-center" style="min-width: 50px;">开启</th>
+                    <th class="text-center">预警</th>
+                    <th class="text-center">报警</th>
+                    <th class="text-center">控制</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {foreach name="plan_alarm" item="vo" key="ko" }
+                <tr>
+                    <td>{$vo.item_name}</td>
+                    <td class="text-center">
+                        <input id="c-{$vo.item}" name="alarm[state_{$vo.item}]" type="hidden" value="{$vo.state}">
+                        <input name="alarm[id_{$vo.item}]" type="hidden"  value="{$vo.id}">
+
+                        <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-{$vo.item}" data-yes="1" data-no="0">
+                            <!--                            <i class="fa fa-toggle-on text-success fa-2x fa-flip-horizontal text-gray"></i>-->
+                            <i class="fa fa-toggle-on text-success fa-2x {if condition="($vo.state == 0)"} fa-flip-horizontal text-gray{/if} "></i>
+                        </a>
+                    </td>
+                    <td>
+                        <input class="form-control" name="alarm[warn_{$vo.item}]" type="number" data-target="#msg-alarm" value="{$vo.warn}">
+                    </td>
+                    <td>
+                        <input class="form-control" name="alarm[error_{$vo.item}]" type="number" data-target="#msg-alarm" value="{$vo.error}">
+                    </td>
+                    <td>
+                        <input class="form-control" name="alarm[control_{$vo.item}]" type="number" data-target="#msg-alarm" value="{$vo.control}">
+                    </td>
+                </tr>
+                {/foreach}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <div style="margin: auto;text-align: center">
+            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+            <button type="button" class="btn btn-primary btn-embossed layer-close">取消</button>
+        </div>
+    </div>
+</form>

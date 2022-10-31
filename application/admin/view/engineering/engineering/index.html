@@ -1,0 +1,104 @@
+
+<style>
+        ol, ul, li {
+    list-style-type: none;
+    float: left;
+}
+      .myTab .active a{
+        color: #46A4FF!important;
+    }
+
+    .myTab {
+        background: #fff;
+        box-shadow: 0 1px 5px rgb(0 0 0 / 50%);
+        position: absolute;
+        z-index: 999;
+        display: none;
+        width: 35%;
+        left: 5%;
+        top: 18.5%;
+    }
+
+    .TabContent {
+        color: #000;
+        font-size: 14px;
+        min-height: 10px;
+        background-color: #fff;
+        padding: 10px 15px;
+        box-sizing: border-box;
+    }
+
+    .TabContent li {
+        padding: 1%;
+    text-align: left;
+    margin: 1%;
+    /* height: 40px; */
+    line-height: 20px;
+    list-style-type: none;
+    }
+.TabContent li span{
+    cursor:pointer;
+    padding: 1%;
+    text-align: left;
+    margin: 1%;
+    line-height: 20px;
+}
+    .myTab ul {
+        width: 100%;
+    }
+
+    .myTab a {
+        display: inline-block;
+        padding: 0px 22px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid transparent;
+        color: #4D4D4D;
+        text-align: center;
+        outline: 0;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: -1px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .isActive {
+        background-color: #46A4FF;
+        color: #fff;
+        border-radius: 2px;
+    }
+
+    .citytab {
+        border-bottom: 1px solid #ccc;
+        background: #f0f0f0;
+        font-size: 13px;
+        height: 40px;
+        line-height: 40px;
+    }
+</style>
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body" >
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <a href="javascript:;" class="btn btn-success btn-add {:$auth->check('engineering/engineering/add')?'':'hide'}" title="添加安全监测工程 " ><i class="fa fa-plus"></i> 添加安全监测工程</a>
+                        <a href="/JMRIUsnmLz.php/inspection/house?ref=addtabs" target="frame"  class="btn btn-success"   title="添加人工巡检工程" ><i class="fa fa-plus"></i>添加人工巡检工程</a>
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('engineering/engineering/edit')}"
+                           data-operate-del="{:$auth->check('engineering/engineering/del')}"
+                           width="100%">
+                    </table>
+                </div>
+         
+            </div>
+
+        </div>
+    </div>
+  
+</div>

@@ -1,0 +1,27 @@
+        <form id="add-form" class="form-horizontal nice-validator n-default n-bootstrap" role="form" data-toggle="validator"
+                              method="POST" action="" novalidate="novalidate">
+                                <input type="hidden" id="project_mon_type_id" value="{$project_mon_type_id}">
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">选择日期:</label>
+                                <div class="col-xs-12">
+                                    {:Form::datepicker('row[data_time]', '', ['data-rule'=>'required','id'=>'data_time'])}
+                                </div>
+                            </div>
+
+
+                        </form>
+                        <div class="form-group layer-footer">
+                            <div style="margin: auto;text-align: center">
+                                <button type="button" class="btn btn-success btn-embossed layer-down">确定</button>
+                                <button type="button" class="btn btn-primary btn-embossed layer-close">取消</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

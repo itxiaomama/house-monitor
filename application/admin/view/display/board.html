@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>自适应显示多个点标记</title>
+    
+</head>
+<body>
+    <div class="wrap">
+       <!-- 左 -->
+        <div class="right">
+           
+            <!-- 卫星地图 -->
+            <div id="container"></div>
+        </div>
+       <!-- 右 -->
+        <div class="left">
+            <tr class="m-tr5">
+                <td class="cl-xs-5 text-center" style="position: relative;padding: 0px 10px;">
+                    <div style="position: absolute;top:-16%;
+                                                left:25%;z-index: 9999;color: #000;" class="c-e state">
+                        <p><i class="fa fa-square" aria-hidden="true" style="color: #00ff00;"></i> 正常</p>
+                        <p><i class="fa fa-square" aria-hidden="true" style="color: #ffff00;"></i> 预警</p>
+                        <p><i class="fa fa-square" aria-hidden="true" style="color: #f39c12;"></i> 报警</p>
+                        <p><i class="fa fa-square" aria-hidden="true" style="color: #e74c3c;"></i> 控制</p>
+                    </div>
+                    <!-- 地图 -->
+                    <div class="c-3" id="china_map">
+    
+                    </div>
+                </td>
+            </tr>
+            
+        </div>
+        
+    </div>
+
+
+<script type="text/javascript"  src="https://webapi.amap.com/maps?v=1.4.15&key=b8cdbf14db90977dc83a008b5c583fef"></script>
+<script type="text/javascript">
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        center: [120.26644,30.182292],
+        layers: [
+            // 卫星
+            new AMap.TileLayer.Satellite(),
+            // 路网
+            new AMap.TileLayer.RoadNet()
+        ],
+        zoom: 12
+    });
+
+    // 实例化点标记
+    function addMarker() {
+        marker = new AMap.Marker({
+            icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png",
+            position: [120.26644,30.182292],
+            offset: new AMap.Pixel(-13, -30)
+        });
+        marker.setMap(map);
+    }
+    addMarker()
+
+    
+</script>
+</body>
+</html>

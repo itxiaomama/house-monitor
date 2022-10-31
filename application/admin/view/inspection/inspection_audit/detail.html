@@ -1,0 +1,1016 @@
+
+<div id="app">
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+        <a href="#Basic" data-toggle="tab">基础信息</a>
+    </li>
+    <li><a href="#record" data-toggle="tab">人工原始记录</a></li>
+
+</ul>
+<div id="myTabContent" class="tab-content" style="border:1px solid #ddd">
+    <div class="tab-pane fade in active" id="Basic">
+        <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+            <h4>基本信息</h4>
+            <input type="hidden" name="row[type]" value="1">
+            <input type="hidden" name="row[manual_id]" id="manual_id" value="{$row['manual_id']}">
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">任务编号:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-id" class="form-control" type="text" name="row[id]" value="{$row['id']}"
+                        disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">房屋名:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-house_name" class="form-control" type="text" value="{$row['house_name']}"
+                        disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">地址:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-address" class="form-control" type="text" value="{$address}" disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">经纬度:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-lat" class="form-control" type="text" value="{$house['lng'].','.$house['lat']}"
+                        disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">结构类型:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <select id="c-structure" class="form-control" type="text" name="structure">
+                        <option value="0" {if condition="$house['structure'] == 0" } selected {/if}>砖混结构</option>
+                        <option value="1" {if condition="$house['structure'] == 1" } selected {/if}>框架结构</option>
+                        <option value="2" {if condition="$house['structure'] == 2" } selected {/if}>砖木结构</option>
+                        <option value="3" {if condition="$house['structure'] == 3" } selected {/if}>钢结构</option>
+                        <option value="4" {if condition="$house['structure'] == 4" } selected {/if}>木结构</option>
+                        <option value="5" {if condition="$house['structure'] == 5" } selected {/if}>混合结构</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">建筑面积:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-acreage" class="form-control" type="text" value="{$house['acreage']}"
+                        disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">层数:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-total_layer" class="form-control" type="text" value="{$house['total_layer']}"
+                        disabled="disabled">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">建造年代:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-year" class="form-control" type="text" value="{$house['year']}" disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">房屋备注:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::textarea('row[note]', $row.note, ['data-rule'=>'required','disabled'=>'disabled'])}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">居民反馈:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::textarea('row[feedback]', $row.feedback, ['data-rule'=>'required','disabled'=>'disabled'])}
+                </div>
+            </div>
+            <!--    <div class="form-group layer-footer">-->
+            <!--        <label class="control-label col-xs-12 col-sm-2"></label>-->
+            <!--        <div class="col-xs-12 col-sm-8">-->
+            <!--            <button type="submit" class="btn btn-success btn-embossed disabled">保存</button>-->
+            <!--        </div>-->
+            <!--    </div>-->
+        </form>
+
+        <form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+            <h4>巡检报告</h4>
+            <input type="hidden" name="row[type]" value="2">
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">巡检开始时间:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-start_time" class="form-control" type="text" value="{$row['start_time']}"
+                        disabled="disabled">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">巡检结束时间:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-end_time" class="form-control" type="text" value="{$row['end_time']}"
+                        disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">巡检人:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input id="c-join_staff_name" class="form-control" type="text" value="{$row['join_staff_name']}"
+                        disabled="disabled">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">立面图:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::images('row[elevation]', $row.elevation , ['data-rule'=>'required','disabled'=>'disabled'])}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">房屋情况:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::select('row[house_status]', [0=>'房屋正常', 1=>'房屋已拆除', 2=>'腾空'], $row.house_status ,
+                    ['data-rule'=>'required','disabled'=>'disabled'])}
+                </div>
+            </div>
+
+            <h4>部位巡检</h4>
+
+            <div class="form-group row">
+                <label class="control-label col-xs-12 col-sm-2">1.地基基础</label>
+                <div class="col-xs-12 col-sm-8">
+                    <dl class="fieldlist" data-template="part10tpl" data-name="row[part10]">
+                        <dd>
+                            <ins>问题</ins>
+
+                            <ins>立面图</ins>
+                        </dd>
+                        <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i>
+                                {:__('Append')}</a></dd>
+                        <!--请注意 dd和textarea间不能存在其它任何元素，实际开发中textarea应该添加个hidden进行隐藏-->
+                        <textarea name="row[part10]" class="form-control" cols="30" rows="5"
+                            style="display:none;">{$part10}</textarea>
+                    </dl>
+                    <script id="part10tpl" type="text/html">
+                <dd class="form-inline">
+                    <input type="hidden" name="<%=name%>[<%=index%>][inspection_id]" value="{$row.id}" />
+                    <input type="hidden" name="<%=name%>[<%=index%>][type]" value="10" />
+                    <ins style="display: block;margin-top: 15px;">
+                        <textarea type="text" name="<%=name%>[<%=index%>][issue]" class="form-control"
+                               value="<%=row.issue%>" placeholder="问题" style="width: 250px;" ><%=row.issue%></textarea></ins>
+
+                    <ins style="display: block;margin-top: 15px;">
+                        <div class="input-group">
+                            <input id="c-part10_issue_img<%=index%>" data-rule="" class="form-control" size="50"
+                                   name="<%=name%>[<%=index%>][issue_img]" type="text" value="<%=row.issue_img%>"
+                                   placeholder="立面图" style="width: 250px;">
+                            <div class="input-group-addon no-border no-padding">
+                                 <span><button type="button" id="faupload-avatar" class="btn btn-danger plupload"
+                                               data-input-id="c-part10_issue_img<%=index%>"
+                                               data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                               data-multiple="false" data-preview-id="p-part10_issue_img<%=index%>"><i
+                                         class="fa fa-upload"></i>
+                                         {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right" for="c-part10_issue_img<%=index%>"></span>
+                        </div>
+                        <ul style="width: 1000px;" class="row list-inline plupload-preview"
+                            id="p-part10_issue_img<%=index%>"></ul>
+
+                    </ins>
+                    <!--下面的两个按钮务必保留-->
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-danger btn-remove"><i
+                            class="fa fa-times"></i></span>
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-primary btn-dragsort"><i
+                            class="fa fa-arrows"></i></span>
+                </dd>
+            </script>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-xs-12 col-sm-2">2.上部结构</label>
+                <div class="col-xs-12 col-sm-8">
+                    <dl class="fieldlist" data-template="part11tpl" data-name="row[part11]">
+                        <dd>
+                            <ins>问题</ins>
+
+                            <ins>立面图</ins>
+                        </dd>
+                        <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i>
+                                {:__('Append')}</a></dd>
+                        <!--请注意 dd和textarea间不能存在其它任何元素，实际开发中textarea应该添加个hidden进行隐藏-->
+                        <textarea name="row[part11]" class="form-control" cols="30" rows="5"
+                            style="display:none;">{$part11}</textarea>
+                    </dl>
+                    <script id="part11tpl" type="text/html">
+                <dd class="form-inline">
+                    <input type="hidden" name="<%=name%>[<%=index%>][inspection_id]" value="{$row.id}" />
+                    <input type="hidden" name="<%=name%>[<%=index%>][type]" value="11" />
+                    <ins style="display: block;margin-top: 15px;">
+                        <textarea type="text" name="<%=name%>[<%=index%>][issue]" class="form-control"
+                               value="<%=row.issue%>" placeholder="问题" style="width: 250px;" ><%=row.issue%></textarea></ins>
+            
+                    <ins style="display: block;margin-top: 15px;">
+                        <div class="input-group">
+                            <input id="c-part11_issue_img<%=index%>" data-rule="" class="form-control" size="50"
+                                   name="<%=name%>[<%=index%>][issue_img]" type="text" value="<%=row.issue_img%>"
+                                   placeholder="立面图" style="width: 250px;">
+                            <div class="input-group-addon no-border no-padding">
+                                 <span><button type="button" id="faupload-avatar" class="btn btn-danger plupload"
+                                               data-input-id="c-part11_issue_img<%=index%>"
+                                               data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                               data-multiple="false" data-preview-id="p-part11_issue_img<%=index%>"><i
+                                         class="fa fa-upload"></i>
+                                         {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right" for="c-part11_issue_img<%=index%>"></span>
+                        </div>
+                        <ul style="width: 1000px;" class="row list-inline plupload-preview"
+                            id="p-part11_issue_img<%=index%>"></ul>
+
+                    </ins>
+                    <!--下面的两个按钮务必保留-->
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-danger btn-remove"><i
+                            class="fa fa-times"></i></span>
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-primary btn-dragsort"><i
+                            class="fa fa-arrows"></i></span>
+                </dd>
+            </script>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-xs-12 col-sm-2">3.围护结构</label>
+                <div class="col-xs-12 col-sm-8">
+                    <dl class="fieldlist" data-template="part12tpl" data-name="row[part12]">
+                        <dd>
+                            <ins>问题</ins>
+
+                            <ins>立面图</ins>
+                        </dd>
+                        <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i>
+                                {:__('Append')}</a></dd>
+                        <!--请注意 dd和textarea间不能存在其它任何元素，实际开发中textarea应该添加个hidden进行隐藏-->
+                        <textarea name="row[part12]" class="form-control" cols="30" rows="5"
+                            style="display:none;">{$part12}</textarea>
+                    </dl>
+                    <script id="part12tpl" type="text/html">
+                <dd class="form-inline">
+                    <input type="hidden" name="<%=name%>[<%=index%>][inspection_id]" value="{$row.id}" />
+                    <input type="hidden" name="<%=name%>[<%=index%>][type]" value="12" />
+                    <ins style="display: block;margin-top: 15px;">
+                        <textarea type="text" name="<%=name%>[<%=index%>][issue]" class="form-control"
+                               value="<%=row.issue%>" placeholder="问题" style="width: 250px;" ><%=row.issue%></textarea></ins>
+            
+                    <ins style="display: block;margin-top: 15px;">
+                        <div class="input-group">
+                            <input id="c-part12_issue_img<%=index%>" data-rule="" class="form-control" size="50"
+                                   name="<%=name%>[<%=index%>][issue_img]" type="text" value="<%=row.issue_img%>"
+                                   placeholder="立面图" style="width: 250px;">
+                            <div class="input-group-addon no-border no-padding">
+                                 <span><button type="button" id="faupload-avatar" class="btn btn-danger plupload"
+                                               data-input-id="c-part12_issue_img<%=index%>"
+                                               data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                               data-multiple="false" data-preview-id="p-part12_issue_img<%=index%>"><i
+                                         class="fa fa-upload"></i>
+                                         {:__('Upload')}</button></span>
+                            </div>
+                            <span class="msg-box n-right" for="c-part12_issue_img<%=index%>"></span>
+                        </div>
+                        <ul style="width: 1000px;" class="row list-inline plupload-preview"
+                            id="p-part12_issue_img<%=index%>"></ul>
+
+                    </ins>
+                    <!--下面的两个按钮务必保留-->
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-danger btn-remove"><i
+                            class="fa fa-times"></i></span>
+                    <span style="margin-top: 15px;" class="btn btn-sm btn-primary btn-dragsort"><i
+                            class="fa fa-arrows"></i></span>
+                </dd>
+            </script>
+                </div>
+            </div>
+
+
+
+
+            <h4>房屋评价</h4>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::radios('row[house_assess]',[ 0=>'房屋原有危险点未得到彻底修缮，本次学差未发现明显恶化 ',
+                    1=>'房屋原有危险点未得到彻底修缮，并有新增或恶化危险点，请主管部门密切关注，必要时对 房屋进行腾空',
+                    2=>'房屋存在重大安全隐患，请主管部门及时腾空' ], $row.house_assess, ['data-rule'=>'required'])}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2">其他问题:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::textarea('row[other]', $row.other, ['data-rule'=>'required','disabled'=>'disabled'])}
+                </div>
+            </div>
+
+
+
+
+
+    
+
+
+        </form>
+    </div>
+    <div class="tab-pane fade" id="record">
+        <div id="app">
+            <el-form :model="From">
+
+                <div class="panel-group" id="accordion">
+                    <header class="header">
+                        <h4>浙江兴红建设工程检测有限公司 <br> <label style="font-size: 14px;">人工巡检原始记录</label> </h4>
+                        <br><span>表码：XHJC/OR-J30A/0-2021</span><span>原始记录编号：<input type="text" class="form-control"
+                                id="originalRecordNum" v-model="result.name" value="result.name"
+                                disabled="disabled"></span><span>房屋编号：<input type="text" class="form-control"
+                                id="houseNum" v-model="result.house_num" disabled="disabled">
+                        </span><span>巡检日期：{{result.inspection_time}}</span>
+                    </header>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    建筑物情况
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+
+                                <ul>
+                                    <div class="row">
+                                        <li><span class="col-md-6 "><label class=" control-label">房屋名称</label><input
+                                                    disabled="disabled" type="text" class="  form-control" id="name"
+                                                    placeholder="请输入名称" v-model="result.build_name"></span><span
+                                                class="col-md-6 "><label class="control-label">坐落地址</label>
+                                                <input type="text" class=" form-control" id="name" disabled="disabled"
+                                                    v-model="result.build_address" placeholder="请输入名称"></span>
+                                    </div>
+                                    </li>
+                                    <div class="row">
+                                        <li><span class="col-md-3 "><label class=" control-label">建造年代</label><input
+                                                    disabled="disabled" type="text" class="  form-control"
+                                                    v-model="result.build_era" placeholder="请输入"></span><span
+                                                class="col-md-3 "><label class=" control-label">房屋用途</label><input
+                                                    type="text" class=" form-control" id="name" placeholder="请输入名称"
+                                                    disabled="disabled" v-model="result.build_use"></span><span
+                                                class="col-md-6 "><label class=" control-label">功能变更</label>
+                                                <div>
+                                                    <span v-for="(item,ids) in checkboxArr.change">
+
+                                                        <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                            disabled="disabled" v-model="From.change" :value="ids" />
+                                                        {{item}}
+                                                    </span>
+                                                </div>
+
+                                            </span></li>
+                                    </div>
+                                    <div class="row">
+                                        <li><span class="col-md-9"><label>建筑层数 </label>
+                                                <br>地下<input type="text" class="form-control" id="name"
+                                                    style="width:260px;" disabled="disabled"
+                                                    v-model="From.build_layer_down" placeholder="请输入">层，地上<input
+                                                    type="text" disabled="disabled" class="form-control" id="name"
+                                                    v-model="From.build_layer_up" style="width:260px"
+                                                    placeholder="请输入">层，加层：<input type="text"
+                                                    v-if="From.build_add_layer!=='0'" disabled="disabled"
+                                                    v-model="From.build_add_layer" class="form-control" id="name"
+                                                    style="width:260px" placeholder="请输入"> <span
+                                                    v-if="From.build_add_layer==='0'">无加层</span>
+                                                <br><label> 拆改：</label>
+                                                <span v-for="(item,ids) in checkboxArr.build_change">
+
+                                                    <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                        disabled="disabled" v-model="From.build_change" :value="ids" />
+                                                    {{item}}
+                                                </span>
+
+                                            </span><span class="col-md-3 "><label>建筑面积 </label><input type="text"
+                                                    disabled="disabled" class="form-control" id="name"
+                                                    placeholder="请输入面积" v-model="result.build_area"></span></li>
+                                    </div>
+                                    <li><span><label>场地</label>
+                                            <div>
+                                                <span v-for="(item,ids) in checkboxArr.build_place">
+
+                                                    <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                        disabled="disabled" v-model="From.build_place" :value="ids" />
+                                                    {{item}}
+                                                </span>
+                                            </div>
+
+                                        </span><span><label>环境</label>
+                                            <div>
+                                                <span v-for="(item,ids) in checkboxArr.build_env">
+
+                                                    <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                        disabled="disabled" v-model="From.build_env" :value="ids" />
+                                                    {{item}}
+                                                </span>
+                                            </div>
+
+                                        </span></li>
+                                    <li><span><label>历史灾害</label>
+                                            <div>
+                                                <span v-for="(item,ids) in checkboxArr.build_his_disaster">
+
+                                                    <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                        disabled="disabled" v-model="From.build_his_disaster"
+                                                        :value="ids" /> {{item}}
+                                                </span>
+                                            </div>
+
+                                        </span><span><label>修缮加固</label>
+                                            <div>
+                                                <span v-for="(item,ids) in checkboxArr.build_repair">
+
+                                                    <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                        disabled="disabled" v-model="From.build_repair" :value="ids" />
+                                                    {{item}}
+                                                </span>
+                                            </div>
+
+                                        </span></li>
+                                    <li><span><label>结构类型</label>
+                                            <div>
+                                                <span v-for="(item,ids) in checkboxArr.build_structure">
+
+                                                    <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                        disabled="disabled" v-model="From.build_structure"
+                                                        :value="ids" /> {{item}}
+                                                </span>
+                                            </div>
+
+                                        </span></li>
+                                    <li><span><label>鉴定情况</label>
+                                            <span v-for="(item,ids) in checkboxArr.build_identify">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.build_identify" :value="ids" />
+                                                {{item.name}}<span v-if="item.chrild!=null">（
+
+                                                    <span v-for="(child,index) in item.chrild">
+                                                        <input type="radio" :label="index" :value="index"
+                                                            disabled="disabled" v-model="From.build_identify[ids]"
+                                                            :id="index" :name="'From.build_identify'+ids"
+                                                            :key="index" />{{child}}</span>）</span>
+                                            </span>
+
+                                        </span></li>
+                                    <li><span><label>巡检依据:</label><span>《危险房屋鉴定标准》（JGJ
+                                                125-2016）；《浙江省危险房屋结构监测技术导则》</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion " href="#collapseTwo">
+                                    现场调查
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse in">
+                            <div class="panel-body">
+
+                                <ul>
+                                    <li><label>地基基础</label>
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_ground">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_ground" :value="ids" />
+                                                {{item.name}}<span v-if="item.chrild!=null">（
+
+                                                    <span v-for="(child,index) in item.chrild">
+                                                        <input type="radio" :label="index" :value="index"
+                                                            disabled="disabled" v-model="From.survey_ground[ids]"
+                                                            :id="index" :name="'From.survey_ground'+ids"
+                                                            :key="index" />{{child}}</span>）</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li><label>梁/楼板</label>
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_floor">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_floor" :value="ids" />
+                                                {{item}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_floor_other">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_floor_other"
+                                                    :value="ids" /> {{item}}
+                                            </span>
+                                        </div>
+                                        <div> <label> 变形</label>
+                                            <span v-for="(item,ids) in checkboxArr.survey_floor_morph">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_floor_morph"
+                                                    :value="ids" /> {{item}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <label>裂缝</label>
+                                            <span v-for="(item,ids) in checkboxArr.survey_floor_crack">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_floor_crack"
+                                                    :value="ids" /> {{item}}
+                                            </span>
+                                        </div>
+
+                                        <div> <label>损伤 </label><span
+                                                v-for="(item,ids) in checkboxArr.survey_floor_damage">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_floor_damage"
+                                                    :value="ids" />{{item.name}}
+                                                <span v-if="item.chrild!=null">（ <span
+                                                        v-for="(child,index) in item.chrild">
+                                                        <input type="radio" :label="index" :value="index"
+                                                            v-model="From.survey_floor_damage[ids]" :id="index"
+                                                            disabled="disabled" :name="'From.survey_floor_damage'+ids"
+                                                            :key="index" />{{child}}</span>）</span>
+                                            </span>
+                                        </div>
+
+                                    </li>
+                                    <li><label>柱/墙</label>
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_wall">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_wall" :value="ids" />
+                                                {{item}}
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_wall_other">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_wall_other" :value="ids" />
+                                                {{item}}
+                                            </span>
+                                        </div>
+                                        <div> <label> 变形</label>
+                                            <span v-for="(item,ids) in checkboxArr.survey_wall_morph">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_wall_morph" :value="ids" />
+                                                {{item}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <label>裂缝</label>
+                                            <span v-for="(item,ids) in checkboxArr.survey_wall_crack">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_wall_crack" :value="ids" />
+                                                {{item}}
+                                            </span>
+                                        </div>
+
+                                        <div> <label>损伤 </label><span
+                                                v-for="(item,ids) in checkboxArr.survey_wall_damage">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_wall_damage"
+                                                    :value="ids" />{{item.name}}
+                                                <span v-if="item.chrild!=null">（ <span
+                                                        v-for="(child,index) in item.chrild">
+                                                        <input type="radio" :label="index" :value="index"
+                                                            disabled="disabled" :id="index"
+                                                            :name="'From.survey_wall_damage'+ids"
+                                                            v-model="From.survey_wall_damage[ids]"
+                                                            :key="index" />{{child}}</span>）</span>
+                                            </span>
+                                        </div>
+
+                                    </li>
+                                    <li><label>屋盖</label>
+
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_house">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_house" :value="ids" />
+                                                {{item}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_house_flat">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_house_flat" :value="ids" />
+                                                {{item}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span v-for="(item,ids) in checkboxArr.survey_house_other">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_house_other"
+                                                    :value="ids" /> {{item}}
+                                            </span>
+                                        </div>
+                                        <div> <label> 变形</label>
+                                            <span v-for="(item,ids) in checkboxArr.survey_house_morph">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_house_morph"
+                                                    :value="ids" /> {{item}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <label>裂缝</label>
+                                            <span v-for="(item,ids) in checkboxArr.survey_house_crack">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_house_crack"
+                                                    :value="ids" /> {{item}}
+                                            </span>
+                                        </div>
+
+                                        <div><label>损伤 </label> <span
+                                                v-for="(item,ids) in checkboxArr.survey_house_damage">
+
+                                                <input type="checkbox" :label="ids" :id="ids" :key="ids"
+                                                    disabled="disabled" v-model="From.survey_house_damage"
+                                                    :value="ids" />{{item.name}}
+                                                <span v-if="item.chrild!=null">（ <span
+                                                        v-for="(child,index) in item.chrild">
+                                                        <input type="radio" :label="index" :value="index"
+                                                            disabled="disabled" v-model="From.survey_house_damage[ids]"
+                                                            :id="index" :name="'From.survey_house_damage'+ids"
+                                                            :key="index" />{{child}}</span>）</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <span>其他</span>
+                                <ul>
+                                    <li><label>楼梯 </label>
+                                        <span v-for="(item,ids) in checkboxArr.survey_stairs">
+
+                                            <input type="checkbox" :label="ids" :id="ids" :key="ids" disabled="disabled"
+                                                v-model="From.survey_stairs" :value="ids" /> {{item}}
+                                        </span>
+                                    </li>
+                                    <li><label>阳台</label>
+                                        <span v-for="(item,ids) in checkboxArr.survey_deck">
+
+                                            <input type="checkbox" :label="ids" :id="ids" :key="ids" disabled="disabled"
+                                                v-model="From.survey_deck" :value="ids" />{{item.name}}
+                                            <span v-if="item.chrild!=null">（ <span v-for="(child,index) in item.chrild">
+                                                    <input type="radio" :label="index" :value="index" :id="index"
+                                                        disabled="disabled" v-model="From.survey_deck[ids]"
+                                                        :name="'From.survey_deck'+ids"
+                                                        :key="index" />{{child}}</span>）</span>
+                                        </span>
+
+                                    </li>
+                                    <li><label>挑板</label>
+
+                                        <span v-for="(item,ids) in checkboxArr.survey_attach">
+
+                                            <input type="checkbox" :label="ids" :id="ids" :key="ids" disabled="disabled"
+                                                v-model="From.survey_attach" :value="ids" />{{item.name}}
+                                            <span v-if="item.chrild!=null">（ <span v-for="(child,index) in item.chrild">
+                                                    <input type="radio" :label="index" :value="index" :id="index"
+                                                        disabled="disabled" v-model="From.survey_attach[ids]"
+                                                        :name="'From.survey_attach'+ids"
+                                                        :key="index" />{{child}}</span>）</span>
+                                        </span>
+                                    </li>
+                                    <li><label>门窗</label>
+                                        <span v-for="(item,ids) in checkboxArr.survey_door">
+
+                                            <input type="checkbox" :label="ids" :id="ids" :key="ids" disabled="disabled"
+                                                v-model="From.survey_door" :value="ids" />{{item.name}}
+                                            <span v-if="item.chrild!=null">（ <span v-for="(child,index) in item.chrild">
+                                                    <input type="radio" :label="index" :value="index" :id="index"
+                                                        disabled="disabled" v-model="From.survey_door[ids]"
+                                                        :name="'From.survey_door'+ids"
+                                                        :key="index" />{{child}}</span>）</span>
+                                        </span>
+
+                                    </li>
+                                    <li><label>附属</label>
+                                        <span v-for="(item,ids) in checkboxArr.survey_board">
+
+                                            <input type="checkbox" :label="ids" :id="ids" :key="ids" disabled="disabled"
+                                                v-model="From.survey_board" :value="ids" />{{item.name}}
+                                            <span v-if="item.chrild!=null">（ <span v-for="(child,index) in item.chrild">
+                                                    <input type="radio" :label="index" :value="index" :id="index"
+                                                        disabled="disabled" v-model="From.survey_board[ids]"
+                                                        :name="'From.survey_board'+ids"
+                                                        :key="index" />{{child}}</span>）</span>
+                                        </span>
+
+                                    </li>
+                                    <li> <label>备注</label>
+                                        <textarea class="form-control" rows="3" v-model="From.remark"
+                                            disabled="disabled"></textarea>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <span><label>巡检人</label>{{result.inspector}}</span>
+
+                </div>
+            </el-form>
+        </div>
+    </div>
+   
+</div>
+<h4>审核</h4>
+<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">审核:</label>
+    <div class="col-xs-12 col-sm-8">
+        <input  type="radio" id="examine" value="1" name="examine" checked />审核</label> 
+        <input  type="radio" id="examine" name="examine" value="2" />驳回 </label> 
+    </div>
+</div>
+
+<div class="form-group layer-footer">
+    <label class="control-label col-xs-12 col-sm-2"></label>
+    <div class="col-xs-12 col-sm-8">
+        <button type="submit" class="btn btn-success btn-embossed"  @click="getFrom()">{:__('OK')}</button>
+        <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+  
+    </div>
+</div>
+</div>
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/element-ui/2.15.7/index.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                formData: '20',
+                optionData: {},
+                checkboxArr: [],
+                result: [],
+                From1: [],
+
+                From: {
+
+                    build_place: [],
+                    build_env: [],
+                    build_his_disaster: [],
+                    build_repair: [],
+                    build_structure: [],
+                    build_identify: [],
+                    survey_ground: [],
+                    survey_floor: [],
+                    survey_floor_other: [],
+                    survey_floor_morph: [],
+                    survey_floor_crack: [],
+                    survey_floor_damage: [],
+                    survey_house: [],
+                    survey_house_crack: [],
+                    survey_house_damage: [],
+                    survey_house_flat: [],
+                    survey_house_morph: [],
+                    survey_house_other: [],
+                    survey_stairs: [],
+                    survey_wall: [],
+                    survey_wall_morph: [],
+                    survey_wall_crack: [],
+                    survey_wall_damage: [],
+                    survey_wall_other: [],
+                    survey_attach: [],
+                    survey_board: [],
+                    survey_deck: [],
+                    survey_door: [],
+                    change: [],
+                    build_change: [],
+                    build_layer_up: '',
+                    build_layer_down: '',
+                    build_add_layer: '',
+                    remark: '',
+
+                },
+            },
+            mounted() {
+                this.getdata()
+            },
+
+            methods: {
+                getdata() {
+                    var manual_id = $('#manual_id').val()
+                    var inspection_id = $('#c-id').val()
+                    var that = this
+                    console.log(manual_id, inspection_id)
+                    $.ajax({
+                        type: "POST",
+                        url: '/JMRIUsnmLz.php/Manual/getManualInfo',
+                        data: {
+                            manual_id: manual_id,
+                            inspection_id: inspection_id
+                        },
+
+                        success: function (res) {
+                            that.checkboxArr = res.data.data
+                            console.log(that.checkboxArr)
+                            that.From.build_layer_up = res.data.result.build_layer_up
+                            that.From.build_layer_down = res.data.result.build_layer_down
+                            that.From.build_add_layer = res.data.result.build_add_layer
+                            that.From.remark = res.data.result.remark
+
+                            that.result = res.data.result
+                            if (res.data.result.build_place !== null) {
+                                that.From.build_place = res.data.result.build_place.split(',')
+                            }
+                            if (res.data.result.build_env !== null) {
+                                that.From.build_env = res.data.result.build_env.split(',')
+                            }
+                            if (res.data.result.build_his_disaster !== null) {
+                                that.From.build_his_disaster = res.data.result.build_his_disaster.split(',')
+                            }
+                            if (res.data.result.build_repair !== null) {
+                                that.From.build_repair = res.data.result.build_repair.split(',')
+                            }
+                            if (res.data.result.build_structure !== null) {
+                                that.From.build_structure = res.data.result.build_structure.split(',')
+                            }
+                            if (res.data.result.build_identify !== null) {
+                                that.From.build_identify = res.data.result.build_identify.split(',')
+                            }
+                            if (res.data.result.build_change !== null) {
+                                that.From.build_change = res.data.result.build_change.split(',')
+                            }
+                            if (res.data.result.change !== null) {
+                                that.From.change = res.data.result.change.split(',')
+                            }
+
+
+                            if (res.data.result.survey_board !== null) {
+                                that.From.survey_board = res.data.result.survey_board.split(',')
+                            }
+                            if (res.data.result.survey_deck !== null) {
+                                that.From.survey_deck = res.data.result.survey_deck.split(',')
+                            }
+                            if (res.data.result.survey_door !== null) {
+                                that.From.survey_door = res.data.result.survey_door.split(',')
+                            }
+                            if (res.data.result.survey_attach !== null) {
+                                that.From.survey_attach = res.data.result.survey_attach.split(',')
+                            }
+                            if (res.data.result.survey_floor !== null) {
+                                that.From.survey_floor = res.data.result.survey_floor.split(',')
+                            }
+                            if (res.data.result.survey_floor_crack !== null) {
+                                that.From.survey_floor_crack = res.data.result.survey_floor_crack.split(',')
+                            }
+                            if (res.data.result.survey_floor_damage !== null) {
+                                that.From.survey_floor_damage = res.data.result.survey_floor_damage.split(',')
+                            }
+                            if (res.data.result.survey_floor_morph !== null) {
+                                that.From.survey_floor_morph = res.data.result.survey_floor_morph.split(',')
+                            }
+                            if (res.data.result.survey_floor_other !== null) {
+                                that.From.survey_floor_other = res.data.result.survey_floor_other.split(',')
+                            }
+                            if (res.data.result.survey_ground !== null) {
+                                that.From.survey_ground = res.data.result.survey_ground.split(',')
+                            }
+                            if (res.data.result.survey_house !== null) {
+                                that.From.survey_house = res.data.result.survey_house.split(',')
+                            }
+                            if (res.data.result.survey_house_crack !== null) {
+                                that.From.survey_house_crack = res.data.result.survey_house_crack.split(',')
+                            }
+                            if (res.data.result.survey_house_damage !== null) {
+                                that.From.survey_house_damage = res.data.result.survey_house_damage.split(',')
+                            }
+                            if (res.data.result.survey_house_flat !== null) {
+                                that.From.survey_house_flat = res.data.result.survey_house_flat.split(',')
+                            }
+                            if (res.data.result.survey_house_morph !== null) {
+                                that.From.survey_house_morph = res.data.result.survey_house_morph.split(',')
+                            }
+                            if (res.data.result.survey_house_other !== null) {
+                                that.From.survey_house_other = res.data.result.survey_house_other.split(',')
+                            }
+                            if (res.data.result.survey_stairs !== null) {
+                                that.From.survey_stairs = res.data.result.survey_stairs.split(',')
+                            }
+                            if (res.data.result.survey_wall !== null) {
+                                that.From.survey_wall = res.data.result.survey_wall.split(',')
+                            }
+                            if (res.data.result.survey_wall_crack !== null) {
+                                that.From.survey_wall_crack = res.data.result.survey_wall_crack.split(',')
+                            }
+                            if (res.data.result.survey_wall_damage !== null) {
+                                that.From.survey_wall_damage = res.data.result.survey_wall_damage.split(',')
+                            }
+                            if (res.data.result.survey_wall_morph !== null) {
+                                that.From.survey_wall_morph = res.data.result.survey_wall_morph.split(',')
+                            }
+                            if (res.data.result.survey_wall_other !== null) {
+                                that.From.survey_wall_other = res.data.result.survey_wall_other.split(',')
+                            }
+
+
+                        }
+                    })
+                },
+                getFrom(){
+                    // var confirm_audit = $('#examine').val()
+                    var confirm_audit = $('input:radio[name="examine"]:checked').val()
+
+                    var inspection_id = $('#c-id').val()
+
+                    console.log(confirm_audit,inspection_id)
+                    $.ajax({
+                    type: "POST",
+                    url: '/JMRIUsnmLz.php/inspection/inspection_audit/confirmAudit',
+                    data: {
+                        confirm_audit: confirm_audit,
+                        inspection_id: inspection_id
+                    },
+
+                    success: function (res) {
+                        if(confirm_audit==='1'){
+                            alert("审核通过")
+                        }else{
+                            alert("驳回通过")
+                        }
+                       
+                    }
+                    })
+                },
+
+            }
+        });
+    </script>
+    <script>
+        
+    </script>
+    <style>
+        .row list-inline plupload-preview li {
+            width: 200px;
+        }
+        ul,
+    li {
+        list-style-type: none;
+        margin: 0 !important;
+        padding: 5px !important;
+    }
+
+    #myTabContent span {
+        color: #606266;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        user-select: none;
+        margin-right: 30px;
+    }
+
+    #myTabContent span>span {
+        margin-right: 0px !important;
+    }
+    #collapseOne li,  #collapseTwo li{
+        border-bottom:1px  dotted #ddd;
+    }
+    #collapseOne ul,  #collapseTwo ul{
+       margin-top:-2%!important;
+    }
+    #accordion label{
+        border-left: 2px solid #18bc9c;
+        padding-left: 1%;
+        width: 100%;
+        margin-top:20px!important;
+    }
+    </style>
+ 

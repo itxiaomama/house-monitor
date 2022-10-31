@@ -1,0 +1,58 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agency_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agency_name" class="form-control" name="row[agency_name]" type="text" value="{$row.agency_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Alarm_warn')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-alarm_warn" class="form-control" name="row[alarm_warn]" type="number" value="{$row.alarm_warn|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Alarm_error')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-alarm_error" class="form-control" name="row[alarm_error]" type="number" value="{$row.alarm_error|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Alarm_control')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-alarm_control" class="form-control" name="row[alarm_control]" type="number" value="{$row.alarm_control|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Alarm_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-alarm_num" class="form-control" name="row[alarm_num]" type="number" value="{$row.alarm_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agency_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agency_id" data-rule="required" data-source="agency/index" class="form-control selectpage" name="row[agency_id]" type="text" value="{$row.agency_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Engineering_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-engineering_id" data-rule="required" data-source="engineering/index" class="form-control selectpage" name="row[engineering_id]" type="text" value="{$row.engineering_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

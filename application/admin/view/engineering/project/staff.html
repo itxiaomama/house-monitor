@@ -1,0 +1,38 @@
+<form id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+    {:token()}
+    <input type="hidden" name="row[engineering_id]" value="{$engineering_id}">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">选择人员:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_select('staff[]', $staff, null, ['class'=>'form-control selectpicker', 'multiple'=>'', 'data-rule'=>'required'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('下拉列表(友好)(多选)')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::selectpickers('row[selectpickers]', ['aa'=>'AA', 'bb'=>'BB'], 'aa', ['data-rule'=>'required'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-flag" class="control-label col-xs-12 col-sm-2">{:__('Flag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-flag" class="form-control selectpicker" multiple="" name="row[flag][]">
+                {foreach name="staff" item="vo"}
+                <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed">确定</button>
+            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+        </div>
+    </div>
+</form>

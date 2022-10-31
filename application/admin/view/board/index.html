@@ -1,0 +1,2154 @@
+
+<link rel="stylesheet" href="__CDN__/assets/libs/fengwo/css/all.css">
+<link rel="stylesheet" href="__CDN__/assets/libs/fengwo/css/style.css">
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html,
+    body,
+    #container {
+        height: 100%;
+        width: 100%;
+        background: rgb(242, 242, 242);
+        overflow: hidden;
+    }
+
+    .content {
+        padding: 0px !important;
+    }
+
+    .left {
+        height: 96%;
+        width: 100%;
+        margin-top: 1%;
+    }
+
+    .right111 {
+        /* width: 25%; */
+        display: inline-block;
+        position: absolute;
+        height: 100%;
+        right: 0;
+        top: 0;
+    }
+
+    .Engineering {
+        height: 85%;
+        width: 25%;
+        margin-top: 1%;
+        position: absolute;
+        bottom: 7%;
+        left: 2%;
+        padding: 1%;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        font-size: 12px;
+
+    }
+
+    .Engineeringtitle {
+        font-size: 18px;
+        border-bottom: 2px solid rgb(109 123 138);
+        text-align: center;
+    }
+
+    .wrap {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    #china_map {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .c-e {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+
+    .c-e p {
+        margin: 0 21px !important;
+        display: inline-block !important;
+    }
+
+    .BMap_cpyCtrl {
+        display: none;
+    }
+
+    .anchorBL {
+        display: none;
+    }
+
+    .amap-logo img {
+        display: none;
+    }
+
+    .amap-copyright {
+        opacity: 0;
+    }
+
+    #main1 {
+        height: 33%;
+        margin-left: 15%;
+        width: 70%;
+        color: #95E7FF;
+        background: rgba(255, 255, 255, .9);
+        position: relative;
+        border-radius: 5px 0 0 5px;
+    }
+
+    #main2 {
+        height: 96%;
+        width: 100%;
+        margin-top: 1%;
+    }
+
+    .m-3-2 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #18bc9c;
+    }
+
+    #m-dev {
+        padding: 0px 10px;
+        width: 100%;
+        height: 95%;
+    }
+
+    .head {
+        background-size: 100% 100%;
+        width: 100%;
+        color: #606266;
+        font-weight: 900;
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        margin-top: 8px;
+    }
+
+    .leftWorp {
+        min-height: 800px;
+        position: absolute;
+        top: 0%;
+    }
+
+    #m-log {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding-top: 5px;
+    }
+
+    .marquee-view {
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        height: 85%;
+        font-size: 14px;
+        margin-top: 2%;
+    }
+
+    .marquee {
+        height: 100%;
+        animation: row 20s linear infinite;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-fill-mode: none;
+        animation-play-state: running;
+        animation-name: row;
+    }
+
+    .marquee:hover {
+        animation-play-state: paused;
+    }
+
+    .row1 {
+        height: 6%;
+        color: #606266;
+        font-size: 12px;
+        position: relative;
+        display: flex;
+        font-weight: 500;
+        line-height: 30px;
+        justify-content: space-between;
+    }
+
+    .row1:hover {
+        color: #fff;
+        background: #18bc9c;
+    }
+
+    .col {
+        text-align: center;
+    }
+
+    .col:nth-child(1) {
+        width: 7%;
+    }
+
+    .col:nth-child(2) {
+        width: 10%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .col3:nth-child(1) {
+        width: 20%;
+    }
+
+    .col3:nth-child(2) {
+        width: 20%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .col2 {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        float: left;
+    }
+
+
+    .col:nth-child(3) {
+        width: 11%;
+    }
+
+    .col:nth-child(4) {
+        width: 22%;
+    }
+
+    .col:nth-child(5) {
+        width: 33%;
+    }
+
+    .col:nth-child(6) {
+        width: 7%;
+    }
+
+    .icon-dot {
+        position: absolute;
+        /*left: 0.64rem;*/
+        opacity: 0;
+    }
+
+    @keyframes row {
+        0% {}
+
+        100% {
+            transform: translateY(-50%);
+        }
+    }
+
+
+    .city-picker-span {
+        border-radius: 5px;
+    }
+
+    .el-input__inner {
+        width: 100%;
+        -webkit-appearance: none;
+        background-color: #FFF;
+        background-image: none;
+        border-radius: 4px;
+        border: 1px solid #DCDFE6;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #606266;
+        display: inline-block;
+        font-size: inherit;
+        height: 32px;
+        line-height: 32px;
+        outline: 0;
+        padding: 0 15px;
+        -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+        transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+    }
+
+    .city-picker-span>.title>span {
+        color: #606266;
+    }
+
+    .echart-selet {
+        max-width: 150px !important;
+        min-width: 100px !important;
+        width: calc(100vw - 800px) !important;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+
+    .echart-selet {
+        margin-left: 10px;
+    }
+
+    .el-input {
+        position: relative;
+        font-size: 14px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .el-select>.el-input {
+        display: block;
+    }
+
+    .el-input__suffix {
+        right: 5px;
+        transition: all .3s;
+    }
+
+    .el-input__prefix,
+    .el-input__suffix {
+        position: absolute;
+        top: 0;
+        -webkit-transition: all .3s;
+        height: 100%;
+        color: #C0C4CC;
+        text-align: center;
+    }
+
+    .el-input__suffix-inner {
+        pointer-events: all;
+    }
+
+    .el-select .el-input .el-select__caret {
+        color: #C0C4CC;
+        font-size: 14px;
+        -webkit-transition: -webkit-transform .3s;
+        transition: -webkit-transform .3s;
+        transition: transform .3s;
+        transition: transform .3s, -webkit-transform .3s;
+        -webkit-transform: rotateZ(180deg);
+        transform: rotateZ(180deg);
+        cursor: pointer;
+    }
+
+    .el-input__icon {
+        height: 100%;
+        width: 25px;
+        text-align: center;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        line-height: 40px;
+    }
+
+    [class*=" el-icon-"],
+    [class^=el-icon-] {
+        font-family: element-icons !important;
+        speak: none;
+        font-style: normal;
+        font-weight: 400;
+        font-variant: normal;
+        text-transform: none;
+        vertical-align: baseline;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .el-input__icon:after {
+        content: '';
+        height: 100%;
+        width: 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .el-icon-arrow-up:before {
+        content: "\e6e1";
+    }
+
+    .popper__arrow {
+        left: 35px;
+        top: -6px;
+        margin-right: 3px;
+        border-top-width: 0;
+        border-bottom-color: #EBEEF5;
+    }
+
+    .el-select-dropdown__wrap::-webkit-scrollbar {
+        width: 0 !important
+    }
+
+    .el-popper .popper__arrow::after {
+        content: " ";
+        border-width: 6px;
+        top: 1px;
+        margin-left: -6px;
+        border-top-width: 0;
+        border-bottom-color: #FFF;
+    }
+
+    .el-select-dropdown__wrap {
+        max-height: 226px !important;
+    }
+
+    .amap-zoomcontrol {
+        position: absolute;
+        left: 5px !important;
+    }
+
+    .layers1 {
+        position: absolute;
+        right: 26px;
+        top: 35px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    #containeone {
+        position: absolute;
+        right: 20px;
+        top: 180px;
+        cursor: pointer;
+        z-index: 10;
+        background: #222D32;
+        color: #FFF;
+        font-size: 14px;
+        width: 37px;
+        height: 30px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    #mapclick {
+        position: absolute;
+        right: 62px;
+        top: 12px;
+        cursor: pointer;
+        z-index: 10;
+        color: #FFF;
+        font-size: 12px;
+        width: 25px;
+        height:25px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .imgUr1,.imgUr2:hover {
+        background: url('/assets/img/shouqi.png') no-repeat;
+        opacity: 0.5;
+        background-size: cover;
+    }
+    .imgUr2,.imgUr1:hover{
+        background: url('/assets/img/open.png') no-repeat;
+        opacity: 0.5;
+        background-size: cover;
+    }
+
+    
+
+    .xuanfu {
+        position: absolute;
+        width: 118px;
+        height: 85px;
+        background: #fff;
+        right: 40px;
+        top: 0px;
+        text-align: center;
+        border-radius: 2px;
+        display: none;
+    }
+
+    .amap-zoom-touch-plus>div,
+    .amap-zoom-touch-minus>div {
+        line-height: 20px !important;
+        background: none !important;
+        color: #6c8c9b;
+        border-radius: 50%;
+        border: 1px solid #6c8c9b;
+        font-size: 18px;
+    }
+
+    .amap-touch-toolbar .amap-zoomcontrol {
+        width: 25px !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        bottom: -125px !important;
+    }
+
+    .amap-zoom-touch-plus,
+    .amap-zoom-touch-minus {
+        height: 25px !important;
+        background: none !important;
+        margin-top: 10px;
+    }
+
+    .amap-zoom-touch-plus {
+        margin-bottom: 0 !important;
+    }
+
+    .amap-touch-toolbar .amap-zoomcontrol:after {
+        height: 0px !important;
+    }
+
+    .xuanfu label {
+        margin-top: 5px;
+    }
+
+    .xuanfu input[type="radio"] {
+        margin: 0px 4px 0px 0px;
+    }
+
+    .back_btn {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #18bc9c;
+        color: #fff;
+        line-height: 35px;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+        display: none;
+        z-index: 10;
+    }
+
+    .panel {
+        background: none !important;
+        width: 100%;
+        height: 100%;
+    }
+
+    .centerwrap {
+        width: 70%;
+        height: 70%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        z-index: 999;
+    }
+
+    .right_persi {
+        display: inline-block;
+        height: 110px;
+        width: 28px;
+        right: 26px;
+        top: 28%;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .right_peowenzi {
+        width: 100%;
+        height: 100%;
+        background: #222D32;
+        border-radius: 12px;
+        text-align: center;
+        float: right;
+        position: relative;
+    }
+
+    .right_peobg {
+        width: 100%;
+        height: 80%;
+        background: #2c3a47;
+        border-radius: 1rem;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        line-height: 19px;
+        font-weight: bold;
+        position: absolute;
+        -webkit-animation: mymove 3s linear infinite alternate;
+        animation: mymove 3s linear infinite alternate;
+    }
+
+    .right_peobg span {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+
+    .right_peoimg {
+        width: 100%;
+        height: 100%;
+        background: rgba(128, 3, 255, .8);
+        border-radius: 0.3rem;
+        text-align: center;
+        /* -webkit-animation: mybig-data-v-26354808 1.5s;
+        animation: mybig-data-v-26354808 1.5s; */
+    }
+
+    #china_map,
+    #china_map div {
+        width: 422px;
+        height: 349px;
+    }
+
+    .right_peoimg p {
+        font-size: 14px;
+        color: #fff;
+    }
+
+    .rig_two {
+        top: 28% !important;
+    }
+
+    .rig_three {
+        top: 45% !important;
+    }
+
+    @keyframes mymoveone {
+        from {
+            top: 4.5%;
+        }
+
+        to {
+            top: 5.5%;
+        }
+    }
+
+    @keyframes mymovetwo {
+        from {
+            top: 50.5%;
+        }
+
+        to {
+            top: 51.5%;
+        }
+    }
+
+    @keyframes mymove {
+        from {
+            top: 0px;
+        }
+
+        to {
+            top: 21px;
+        }
+    }
+
+    .xianone {
+        width: 100%;
+        height: 2px;
+        background: rgb(24, 188, 156);
+        margin-top: 1%;
+    }
+
+    .coxzaij,
+    .coxzaij1 {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        line-height: 24px;
+        text-align: center;
+        border: 1px solid #6c8c9b;
+        right: 5px;
+        top: 5px;
+        color: #6c8c9b;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .shujul1 {
+        font-size: 18px;
+        color: #fff;
+        display: inline-block;
+    }
+
+    .titleone {
+        color: #18bc9c;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        position: absolute;
+        left: 50%;
+        top: 10px;
+        transform: translate(-50%, 0px);
+    }
+
+    .h1-3 {
+        float: left;
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .textine {
+        width: 20px;
+        position: absolute;
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .control-relative {
+        min-width: 200px;
+        height: 32px;
+        display: inline-block;
+        position: relative;
+        z-index: 99999;
+        color: #606266;
+        font-size: 14px;
+        vertical-align: bottom;
+    }
+
+    .clear {
+        width: 125px;
+        display: inline-block;
+        float: left;
+
+    }
+
+    .twofdsas {
+        width: 114px;
+        display: inline-block;
+        padding-top: 45px;
+        position: absolute;
+        right: 108px;
+    }
+
+    .cenasas {
+        width: 300px;
+        position: absolute;
+        top: 5%;
+        animation: mymoveone 3s linear infinite alternate;
+    }
+
+    .cenasas1 {
+        width: 300px;
+        position: fixed;
+        top: 51%;
+        animation: mymovetwo 3s linear infinite alternate;
+    }
+
+    .wenzixuanzhuan {
+        transform: rotate(-90deg);
+        width: 100px;
+        position: absolute;
+        top: 26px;
+        left: 11px;
+        font-size: 25px;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    .fengexian {
+        width: 200px;
+        height: 3px;
+        background: #222D32;
+        position: absolute;
+        left: 0;
+        top: 4%;
+        color: #fff;
+        text-align: center;
+    }
+
+    .fengexian1 {
+        width: 200px;
+        height: 3px;
+        background: #222D32;
+        position: absolute;
+        left: 0;
+        top: 57%;
+        color: #fff;
+        text-align: center;
+    }
+
+    .quanbutitle {
+        width: 40%;
+        position: absolute;
+        left: 50%;
+        top: 80px;
+        transform: translate(-50%, 0px);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .amap-info-close {
+        right: 5px !important;
+    }
+
+    .amap-info-contentContainer.bottom-left,
+    .amap-info-contentContainer.bottom-center,
+    .amap-info-contentContainer.bottom-right {
+        opacity: 0.8;
+
+    }
+
+    .amap-info-content {
+        line-height: 2 !important;
+    }
+
+    #myPageTop {
+        z-index: 10;
+        height: 60px;
+        border-radius: 5px;
+        line-height: 23px;
+        padding-left: 10px;
+    }
+
+    #tipinput {
+        padding-left: 5px;
+        border-radius: 5px;
+    }
+
+    #tipinput:-moz-placeholder {
+        color: #6c8c9b;
+    }
+
+    #tipinput:-ms-input-placeholder {
+        color: #6c8c9b;
+    }
+
+    #tipinput::-webkit-input-placeholder {
+        color: #6c8c9b;
+    }
+
+    .btn-prim111 {
+        color: #fff !important;
+        background-color: #2c3e50;
+        border-color: #2c3e50;
+
+    }
+
+    .btn-prim111:hover {
+        color: #fff;
+        background-color: #1a242f;
+        border-color: #161f29;
+    }
+
+    #datefilter {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .amap-sug-result {
+        display: none;
+    }
+
+    .inp_grou {
+        position: absolute;
+        top: 55px;
+        left: 15px;
+    }
+
+    .inp_grou1 {
+        position: absolute;
+        top: 15px;
+        left: 614px;
+    }
+
+    #line-chart {
+        margin-top: 20px;
+        width: 94%;
+        margin-left: 3%;
+        height: 80%;
+    }
+
+    .btn-default {
+        background-color: #fff !important;
+    }
+
+    .new_tanc {
+        width: 60%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        line-height: 40px;
+        background: #fff;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+
+    .ner_shanchu {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    .new_title_wen div {
+        color: #1a242f;
+    }
+
+    .new_title_wen {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 8%;
+        display: inline-block;
+        float: left;
+    }
+
+    .nie_baijingxinxi div {
+        text-align: center;
+    }
+
+    .nie_baijingxinxi {
+        padding-right: 10px;
+        width: 90%;
+        float: right;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nie_bayitiaoyitiao {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .nie_bayitiaoyitiao:hover {
+        background: rgb(24, 188, 156);
+    }
+
+    .MonitoringPoint {
+        width: 25%;
+        margin-top: 1%;
+        position: absolute;
+        bottom: 7%;
+        height: 85%;
+        left: 2%;
+        padding: 0.5%;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        font-size: 12px;
+    }
+
+.amap-marker-label{
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
+         border-radius: 5px;
+    }
+    .Spoint {
+        width: 200px;
+        font-size: 14px;
+        border-radius: 10px;
+        display: block;
+        padding:2%;
+    }
+    .info{
+        border-radius: 10px;
+        padding:2%; 
+        display: block;
+    }
+    .Engineering span:nth-child(odd) {
+        display: block;
+        float: left;
+        line-height: 2;
+        width:50%;
+        text-align: left;
+
+    }
+
+    .arr {
+        overflow-y: auto;
+        line-height: 2.5rem;
+        height: 92%
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: #fff;
+    }
+
+    /*定义滚动条轨道 内阴影+圆角*/
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    /*定义滑块 内阴影+圆角*/
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: #2c3a47;
+    }
+
+    .Engineering span:nth-child(even) {
+        float: right;
+        width: 50%;
+        display: block;
+        line-height: 2;
+        text-align: left;
+
+    }
+
+    .arr>.point {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .arr>.point:hover{
+        background: #babcbe;
+        color:#fff;
+   
+    }
+    .arr>.point:nth-child(odd) {
+        width: 48%;
+        float: left;
+        border-right: 0.2px dashed #545252a6;
+        padding: 2%;
+        border-bottom: 0.2px dashed #545252a6;
+    }
+
+    .arr>.point div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 98%;
+        margin-bottom: 5px;
+    }
+    .arr>.point label{
+        margin:0!important;
+    }
+    .arr>.point:nth-child(even) {
+        width: 48%;
+        float: left;
+        padding: 2%;
+        border-bottom: 0.2px dashed #545252a6;
+    }
+
+    .arr>.point label {
+        background: #5e7c7763;
+        color: #fff;
+        padding-left: 2%;
+        margin-right: 1%;
+        width: 35%;
+    }
+
+    .arr>.point:nth-last-of-type(-n+2) {
+        border-bottom: none !important;
+    }
+.pointdiv{
+    font-weight: 800;
+    padding-right:5%;
+    color:#18bc9c;
+}
+    .proTitle {
+       
+        border-bottom:1.5px solid #87919a;
+        position: relative;
+        color: #87919a;
+        text-align: center;
+        width: 84px;
+        height: 43px;
+        line-height: 43px!important;
+        text-align: center;
+        font-size: 16px;
+        width: 100% !important;
+
+    }
+
+    /* .proOne,
+    .monitoring {
+        height: 22%;
+    } */
+
+    .proOne,
+    .monitoring,
+    .project {
+        /* background-color: rgba(255,255,255,0.3); */
+       
+        min-height: 100px;
+        float: left;
+        padding-left: 2%;
+        padding-top: 5%;
+        width: 100%;
+        padding: 2%;
+        border-radius: 0px 4px 4px 4px;
+    }
+
+    .project {
+        height: 25%;
+    }
+
+    .project span {
+        width: 100% !important;
+    }
+
+    .shouall_img {
+        transition: all 1.5s;
+        transform: rotate(180deg);
+    }
+    .shouall_img:hover{
+        transition: all 1.5s;
+        transform: rotate(-180deg);  
+    }
+
+    .shouall_i {
+        transition: all 1.5s;
+        transform: rotate(-180deg);
+    }
+
+    .shouall {
+        position: absolute;
+        cursor: pointer;
+        right: -40px;
+        top: 60%;
+    }
+
+    .shouall img {
+        width: 50%;
+        height: 100%;
+        opacity: 0.5;
+    }
+    .sho_img{
+        background: url('/assets/img/right_quank.png') no-repeat;
+        width: 50px;
+    margin-left: -100%;
+    height: 50px;
+    background-size: cover;
+ 
+    }
+
+    .sho_img2,.sho_img:hover, .imgUr1:hover ~ .sho_img,.imgUr2:hover ~ .sho_img{
+        background: url('/assets/img/right_quank1.png') no-repeat;
+        width: 50px;
+    margin-left: -100%;
+    height: 50px;
+    background-size: cover;
+    }
+    .markerClass{
+       margin-left: 100px;
+       margin-top: 100px;
+       width: 18px;
+       height: 18px;
+       /*transform: translate3d(0px, 0px, 0px);*/
+       position: relative;
+       outline: none;
+       background-color: #dd524d;
+       box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.75);
+       border-radius: 100%;
+       transform-origin: 0 0;
+       display: block;
+       opacity: 0.7;
+   }
+   
+   .markerClass::after {
+       content: "";
+       -webkit-border-radius: 100%;
+       border-radius: 100%;
+       height: 300%;
+       width: 300%;
+       position: absolute;
+       margin: -100% 0 0 -100%;
+       box-shadow: 0 0 6px 2px #dd524d;
+       animation: pulsate 1s ease-out;
+       animation-iteration-count: infinite; /*无穷反复*/
+       animation-delay: 1.1s;
+   }
+   
+   @keyframes pulsate {
+       0% {
+           transform: scale(0.1, 0.1);
+           opacity: 0;
+           filter: alpha(opacity=0);
+       }
+       50% {
+           opacity: 1;
+           filter: none;
+       }
+       100% {
+           transform: scale(1.2, 1.2);
+           opacity: 0;
+           filter: alpha(opacity=0);
+       }
+   }
+.prolist{
+    line-height: 3rem;
+    border: 0.5px solid rgba(44, 62, 80, 0.3);
+    width: 98%;
+    border-radius: 4px;
+    margin: 1%;
+    background: #dddd;
+    font-size: 14px;
+}
+.prodiv{
+    width: 100%;
+    padding: 2%; 
+}
+.prolist label:hover,.selected .prolabel{
+    color: #fff;
+    background-color: #18bc9c;
+
+}
+.prolabel{
+    width: 100%!important;
+    margin:0!important;
+    padding-left:5%;
+    padding: 10px 0 10px 25px;
+    color: #b8c7ce;
+    background: rgb(44 58 71 / 64%);
+}
+.proTitle span{
+    width: 5px!important;
+    height: 20px!important;
+    background: #181f23;
+    margin-top: 3.5%;
+    margin-right: 2%;
+
+}
+
+ 
+    .prolabel::after {
+      content: "+";
+      font-size: 20px;
+      float: right;
+      margin-right: 15px;
+      transform: rotate(180deg);
+    }
+    .selected .prolabel::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .prowarp {
+        display: none;
+     
+
+
+      text-align: center;
+      overflow-y: auto;
+      padding:2%;
+    }
+    .selected .prowarp{
+        display: block;
+       transform: translate(0,0%);
+        transition: .5s;
+
+  
+    }
+ 
+  
+</style>
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div id="app" class="panel panel-default panel-intro">
+        <div class="wrap">
+
+            <!-- 卫星地图 -->
+            <div id="container"> </div>
+
+            <input type="hidden" value="{$item_id}" id="item_id">
+            <div class="titleone">监测云平台数据看板</div>
+            <div class="quanbutitle">
+                <!-- <div id="myPageTop">
+                <input placeholder="请输入建筑物查询" id="tipinput"/>
+            </div> -->
+                <div class="shujul1">实时测点数据：
+                    <span class='c-d' style="color: rgb(24, 188, 156);font-weight: 600;"> {$totalData} 条</span>
+                </div>
+
+
+                <a href="/JMRIUsnmLz.php/exception/exception_alarm" class="btn-addtabs baojin" title="报警管理">
+                    <span style="color: #fff;font-size: 18px;" class="m-2-1"> 实时报警数据：</span>
+                    <span style="font-size: 18px; font-weight: 600;vertical-align: top; color: #18bc9c;" class="m-2-2"
+                        id="alarm-num">
+                        {{alarm_count}} 条
+                    </span>
+                </a>
+                <!-- 时间 -->
+                <div class="h1-3">
+                </div>
+
+            </div>
+            <div class="MonitoringPoint">
+                <span
+                    style="text-align: center; font-size: 18px; font-weight: bold; color: rgb(0, 0, 0);margin: auto;display: block;">监测信息</span>
+                <div class="coxzaij1" @click="showtK(1)">X</div>
+                <div class="arr" style="margin-top:5%">
+                </div>
+            </div>
+            <!-- 全屏按钮 -->
+            <div @click="yigecida()" id='containeone'>全屏</div>
+            <!-- <div vlaue=3 class="right_persi">
+                <div class="right_peowenzi">
+                    <div class="right_peobg right_pone">
+                        <div class="textine" @click="showMap()" id='mapclick'>地图</div>
+                    </div>
+                </div>
+                <div class="right_peoimg" style="display:none;">
+                    <img src="/assets/img/layers.png" alt="">
+                    <p>地图</p>
+                </div>
+            </div> -->
+            <div class="shouall">
+              <div class="sho_img shouall_img"></div>
+                <div @click="showMap()" id='mapclick' :class="rigiconshow ? 'imgUr1': 'imgUr2'" alt=""></div>
+            </div>
+            <!-- <div @click="showMap()" id='mapclick'>地图</div> -->
+            <!-- <div  class="layers1">
+            <img class="img-xuan" src="/assets/img/layers.png" />
+            <div class="xuanfu">
+                <label> <input class="morenint" type="radio" value="0" name="map" checked>高德暗夜地图</label>
+                <label> <input type="radio" value="1" name="map">高德卫星地图</label>
+                <label> <input type="radio" value="2" name="map">高德街道地图</label>
+            </div>
+        </div> -->
+            <!-- 中间内容 -->
+            <div class="centerwrap" style="display: none;">
+                <div class="coxzaij">X</div>
+                <!-- 三级联动和图表 -->
+                <div class="left" style="display: none;">
+                    <div style="text-align: center;font-size: 18px; font-weight: bold;color: #000;">测点监测 <span
+                            style="font-size: 18px; font-weight: 600;vertical-align: top; color: #18bc9c;">({$totalData}
+                            条)</span> </div>
+                    <div class="xianone"></div>
+                    <div style="position: absolute;left: 5%; top: 10%;">
+                        <div class='control-relative'>
+                            <input id="city-picker3" class="form-control" readonly size="70" type="text"
+                                value="浙江省/杭州市/萧山区" />
+                        </div>
+                        <div style="z-index: 999;" class="el-select echart-selet">
+                            <div id="qutwo" class="el-input el-input--suffix">
+                                <input type="text" autocomplete="off" placeholder="请选择" class="el-input__inner"
+                                    :value="numonne" readonly="readonly">
+                                <span class="el-input__suffix">
+                                    <span class="el-input__suffix-inner"><i
+                                            class="el-select__caret el-input__icon el-icon-arrow-up"></i></span>
+                                </span>
+                            </div>
+
+                            <!-- 下拉 -->
+                            <div class="el-select-dropdown el-popper" id="didiantwo"
+                                style="min-width: 150px; transform-origin: center top; z-index: 2120; display: none;">
+                                <div class="el-scrollbar">
+                                    <div class="el-select-dropdown__wrap el-scrollbar__wrap"
+                                        style="margin-bottom: -7px; margin-right: -7px;">
+                                        <ul class="el-scrollbar__view el-select-dropdown__list">
+                                            <li v-for="(item,index) in namecity" :key='index'
+                                                class="el-select-dropdown__item" :class="index==0?'selected':''">
+                                                <span>{{item.item_name}}</span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="el-scrollbar__bar is-horizontal">
+                                        <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                                    </div>
+                                    <div class="el-scrollbar__bar is-vertical">
+                                        <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+                                    </div>
+                                </div>
+                                <div x-arrow="" class="popper__arrow"
+                                    style="left: 35px;border-top-width: 0;border-bottom-color: #EBEEF5;"></div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div style="z-index: 999;" class="el-select echart-selet">
+                            <div id="quthree" class="el-input el-input--suffix">
+                                <input type="text" autocomplete="off" placeholder="请选择" :value='numtwoww'
+                                    class="el-input__inner" readonly="readonly">
+                                <span class="el-input__suffix">
+                                    <span class="el-input__suffix-inner"><i
+                                            class="el-select__caret el-input__icon el-icon-arrow-up"></i></span>
+                                </span>
+                            </div>
+                            <!-- 下拉 -->
+                            <div class="el-select-dropdown el-popper" id="weizhithree"
+                                style="min-width: 150px; transform-origin: center top; z-index: 2120; display: none;">
+                                <div class="el-scrollbar">
+                                    <div class="el-select-dropdown__wrap el-scrollbar__wrap"
+                                        style="margin-bottom: -7px; margin-right: -7px;">
+                                        <ul class="el-scrollbar__view el-select-dropdown__list">
+                                            <li v-for="(item,index) in namegc" :class="index==0?'selected':''"
+                                                :Key="index" class="el-select-dropdown__item">
+                                                <span>{{item.point_code}}</span>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="el-scrollbar__bar is-horizontal">
+                                        <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                                    </div>
+                                    <div class="el-scrollbar__bar is-vertical">
+                                        <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+                                    </div>
+                                </div>
+                                <div x-arrow="" class="popper__arrow"
+                                    style="left: 35px;border-top-width: 0;border-bottom-color: #EBEEF5;"></div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <div id="echartthree" style="width: 100%;height: 100%;">
+
+
+                        <div class="panel panel-default panel-intro">
+                            <div class="panel-body" id="datefilter">
+                                <form id="form1" action="" role="form" novalidate="novalidate"
+                                    class="form-inline nice-validator n-default n-bootstrap">
+                                    <a href="javascript:;" class="btn btn-prim111 btn-refresh" id="re-echart"><i
+                                            class="fa fa-refresh"></i></a>
+
+
+
+
+                                    <!-- 累计变化量 -->
+                                    <div class="input-group inp_grou1" style="min-width: 150px">
+                                        <div class="btn-group bootstrap-select input-group-btn form-control input-inline"
+                                            style="z-index: 9999999;">
+                                            <select class="selectpicker form-control input-inline" id="my-type" title=""
+                                                data-actions-box="false" tabindex="-98">
+                                                <option value="" selected></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <!-- 时间 -->
+                                    <div style="display: inline-block;position: absolute;top: 10%;left: 780px;">
+                                        <div class="input-group">
+                                            <span class="input-group-addon m-addon"><i
+                                                    class="fa fa-calendar"></i></span>
+                                            <input type="text" class="form-control datetimerange text-center"
+                                                name="record_time" value="" placeholder="开始时间 - 结束时间" id="my-time"
+                                                data-index="2" style="width:270px;" autocomplete="off">
+                                        </div>
+                                        <div style="position: absolute;left: 306px; top:0;" class="input-group">
+                                            <button type="button" class="btn btn-prim111 get-data">搜索</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="line-chart"></div>
+                                <div class="input-group" style="width: 290px;bottom: 20px;">
+                                    <input style="width: 120px;" type="number" id="y_min" placeholder="Y轴最小值"
+                                        autocomplete="off" class="form-control">
+
+                                    <input style="width: 120px;" type="number" id="y_max" placeholder="Y轴最大值"
+                                        autocomplete="off" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-prim111  set-data">确认</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+
+                <!-- 滚动警情 -->
+                <div id="main2" style="display: none;">
+                    <div style="text-align: center;font-size: 18px; font-weight: bold;color: #606266;">报警监测 <span
+                            style="font-size: 18px; font-weight: 600;vertical-align: top; color: #18bc9c;">({{alarm_count}}
+                            条)</span> </div>
+                    <div class="xianone"></div>
+                    <table width="100%" height="100%" border="0" class="tab1">
+                        <tbody>
+                            <tr class="m-tr4">
+                                <td colspan="2" class="m-2-3">
+                                    <div id="m-log">
+                                        <!-- background-color: rgb(247 247 247); -->
+                                        <div style="display: block; ">
+                                            <div class="head">
+                                                <span class="col">测点编号</span>
+                                                <span class="col">项目名称</span>
+                                                <span class="col">报警时间</span>
+                                                <span class="col">报警地点</span>
+                                                <span class="col">报警内容</span>
+                                                <span class="col">警情状态</span>
+                                            </div>
+                                            <div class="marquee-view">
+                                                <div class="marquee" id="m-list">
+                                                    <a v-for="(item, index) in alarm" :key="index"
+                                                        :href="'/JMRIUsnmLz.php/exception/exception_alarm/detail/ids/'+ item.exception_alarm_id + '?ref=addtabs'"
+                                                        class=" btn-addtabs">
+                                                        <div class="row1">
+                                                            <span class="col">{{item.point_code}}</span>
+                                                            <span class="col">{{item.item_name}}</span>
+                                                            <span class="col">{{item.record_time}}</span>
+                                                            <span class="col">{{item.address}}</span>
+                                                            <span class="col">{{item.content}}</span>
+                                                            <span class="col">{{item.alarm_status_name}}</span>
+                                                            <span class="icon-dot">
+                                                            </span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="mappro"
+                style="position: absolute;bottom: -30px;right: 0px; width: 422px;height:349px;z-index: 10;">
+                <span class="back_btn">返回 </span>
+                <!-- 地图 -->
+                <div class="c-3" id="china_map">
+                </div>
+            </div>
+            <!-- 右 -->
+            <div class="right111">
+
+                <!-- 右边悬浮按钮 -->
+                <div vlaue=1 class="right_persi">
+                    <div class="right_peowenzi">
+                        <div class="right_peobg right_pone">
+                            <div class="textine">报警监测</div>
+                        </div>
+                    </div>
+                    <div class="right_peoimg" style="display:none;">
+                        <img src="/assets/img/layers.png" alt="">
+                        <p>报警监测</p>
+                    </div>
+                </div>
+                <!-- <div  vlaue = 2 class="right_persi rig_two">
+                <div class="right_peowenzi">
+                    <div class="right_peobg"><span>检测设备</span></div>
+                </div>
+                <div class="right_peoimg" style="display:none;" >
+                    <img src="/assets/img/layers.png" alt="">
+                    <p>检测设备</p>
+                </div>
+            </div> -->
+                <div vlaue=3 class="right_persi rig_three">
+                    <div class="right_peowenzi">
+                        <div class="right_peobg right_ptwo">
+                            <div class="textine">测点监测</div>
+                        </div>
+                    </div>
+                    <div class="right_peoimg" style="display:none;">
+                        <img src="/assets/img/layers.png" alt="">
+                        <p>测点监测</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="leftWorp">
+                <div class="fengexian"><span
+                        style="position: absolute;top: -20px;left: 50%; margin-left: -46px;font-size: 16px;font-weight: bold;">机构工程设备</span>
+                </div>
+                <!-- 蜂窝状的样式 -->
+                <div class="cenasas">
+                    <div class="hexagon-menu clear">
+                        <div v-for="(item,index) in arrthree" :key="index" class="hexagon-item">
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <a href="/JMRIUsnmLz.php/sensor" class="hex-content">
+                                <div class="wenzixuanzhuan">
+                                    <div style="color: #18bc9c;">{{item.num}}</div>
+                                    <div class="title11">{{item.name}}</div>
+                                </div>
+                                <svg viewBox="0 0 173.20508075688772 200" height="107" width="120" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                                        fill="#1e2530"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+
+                    </div>
+                    <div class="twofdsas">
+                        <div v-for="(item,index) in arrfor" :key="index" class="hexagon-item">
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <a :href="item.name=='机构数量'?'/JMRIUsnmLz.php/agency':item.name=='工程数量'?'/JMRIUsnmLz.php/engineering/engineering':'/JMRIUsnmLz.php/inspection/inspection'"
+                                class="hex-content">
+                                <div class="wenzixuanzhuan">
+                                    <div style="color: #18bc9c;">{{item.num}}</div>
+                                    <div class="title11">{{item.name}}</div>
+                                </div>
+                                <svg viewBox="0 0 173.20508075688772 200" height="107" width="120" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                                        fill="#1e2530"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fengexian1"><span
+                        style="position: absolute;top: -20px;left: 50%; margin-left: -46px;font-size: 16px;font-weight: bold;">工程项目监测</span>
+                </div>
+                <div class="cenasas1">
+                    <div class="clear">
+                        <div v-for="(item, index) in arryone" :key="index" class="hexagon-item">
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <a href="/JMRIUsnmLz.php/engineering_type" class="hex-content">
+                                <div class="wenzixuanzhuan">
+                                    <div style="color: #18bc9c;">{{item.count}}</div>
+                                    <div class="title11">{{item.mon_item_name}}</div>
+                                </div>
+                                <svg viewBox="0 0 173.20508075688772 200" height="107" width="120" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                                        fill="#2C3A47"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="twofdsas">
+                        <div v-for="(item, index) in arrytwo" :key="index" class="hexagon-item">
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="hex-item">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <a href="/JMRIUsnmLz.php/engineering_type" class="hex-content">
+                                <div class="wenzixuanzhuan">
+                                    <div style="color: #18bc9c;">{{item.count}}</div>
+                                    <div class="title11">{{item.mon_item_name}}</div>
+                                </div>
+                                <svg viewBox="0 0 173.20508075688772 200" height="107" width="120" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                                        fill="#2C3A47"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 弹窗 -->
+        <div class="new_tanc">
+            <div class="ner_shanchu">X</div>
+            <div class="new_title_wen">
+                <div>流水号</div>
+                <div>项目名称</div>
+                <div>所属工程</div>
+                <div>报警日期</div>
+                <div>警情状态</div>
+                <div>处理进度</div>
+                <div>经纬度</div>
+            </div>
+            <div class="nie_baijingxinxi">
+                <div v-for="(item,index) in tandata" :key='index' class="nie_bayitiaoyitiao">
+                    <div> {{item.serial}}</div>
+                    <div>{{item.project_name}}</div>
+                    <div>{{item.engineering_name}}</div>
+                    <div>{{item.alarm_time}}</div>
+                    <div>{{item.alarm_status}}</div>
+                    <div>{{item.record_status}}</div>
+                    <div> {{item.lat}},{{item.lng}}</div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="Engineering" style="display: none;">
+   
+            <div class="Engineeringtitle">工程信息</div>
+            <div class="coxzaij1" @click="showtK(2)">X</div>
+            
+  <!-- <div class="menu_tab">
+    <ul>
+        <li v-for="(item, index) in lnglat">
+            <label class="tab" :class="index === 0 ? 'selected' : ''"  >{{ item.name }} </label>
+            <div class="tab_content">
+              长大以后 现在的我 常常会寂寞 <br> 
+              偶尔缱绻 星星闪烁 剩最亮一颗 <br>
+              往事如风 划过夜空 你的歌 <br>
+              跳动音符 熟悉旋律 谁来合 <br>
+            </div> 
+        </li>
+      <li >
+        <label class="tab selected"  >内容显示1 </label>
+        <div class="tab_content">
+          长大以后 现在的我 常常会寂寞 <br> 
+          偶尔缱绻 星星闪烁 剩最亮一颗 <br>
+          往事如风 划过夜空 你的歌 <br>
+          跳动音符 熟悉旋律 谁来合 <br>
+        </div> 
+      </li>
+      <li>
+        <label class="tab">内容显示 2</label>
+        <div class="tab_content" style="color:red;">
+          长大以后 现在的我 忘记了快乐 <br>
+          人来人去 留在身边 的朋友不多 <br>
+          那些天真 纯纯的笑 哪去了 <br>
+          洁白翅膀 美丽天使 不见了 <br>
+        </div> 
+      </li>
+      <li>
+        <label class="tab">内容显示 3</label>
+        <div class="tab_content" style="color:blue;">
+          曾经以为 世界很美 没人流眼泪 <br>
+          吹熄蜡烛 许个心愿 全都会实现 <br>
+          原来的我 怀念从前 是因为太留恋 <br>
+          懵懂的岁月中 只收藏了简单的笑脸 <br>
+        </div> 
+      </li> 
+    </ul>
+  </div>-->
+            <div class="probox" style="overflow-y: auto;margin-top:5%; max-height: 95%;">
+                <div class="prolist"   :class="{selected:ids == num}"   v-if="status ===1 "v-for="(item,ids) in lnglat"   :key="ids">
+                 <label  class="prolabel" @click="gotoDetail(item,ids)"  >  {{item.name}}  </label>  
+                   <div class="prowarp"  >
+                    <div class="pro1">
+                       
+                        <span class="proTitle"><span></span>工程信息</span> 
+                        <!-- <img  @click="goback()" v-if="status ===1 " src="/assets/img/back.png" style="width:25px;height: 25px;position: absolute;    right:30px; top: 60px;"alt="">   -->
+                        <div class="project">
+    
+                            <span><label class="proLable">工程名称：</label>{{engineering.name}}</span>
+                            <span><label class="proLable">所属机构：</label>{{engineering.agency_name}}</span>
+                            <span><label class="proLable">负责人：</label>{{engineering.staff_name}}</span>
+                            <span><label class="proLable">所在区域：</label>{{engineering.city}}</span>
+                            <span><label class="proLable">工程地址：</label>{{engineering.address}}</span>
+                            <span><label class="proLable">开工时间：</label>{{engineering.finish_date}}</span>
+                        </div>
+                    </div>
+                    <div class="pro2"  >
+                        <span class="proTitle"><span></span>项目信息</span>
+                        <div class="proOne" >
+                            <div v-for="(item,index) in project" :key="index">
+                                <span><label class="proLable">流水号：</label> {{ item.serial}}</span>
+                                <span><label class="proLable">项目名称：</label>{{ item.item_name}}</span>
+                                <span><label class="proLable">报警状态：</label> {{ item.alarm_state===0?'正常':'报警'}}</span>
+                                <span><label class="proLable">完工状态：</label>{{ item.status===0?'进行中':'完工'}}</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="pro3"  >
+                        <span class="proTitle"><span></span>监测内容</span>
+                        <div class="monitoring" >
+                            <div v-for="(ss, ids) in project">
+    
+                                <div v-for="(zz, idss) in ss.project_mon_type" :key="idss">
+                                    <span><label class="proLable"></label>{{zz.mon_type_name}}</span>
+                                    <span><label class="proLable"></label>{{zz.count}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+                </div>
+                <div class="prowarp"   v-if="status ===0 ">
+                    <div class="pro1">
+                       
+                        <span class="proTitle"><span></span>工程信息</span> 
+                        <!-- <img  @click="goback()" v-if="status ===1 " src="/assets/img/back.png" style="width:25px;height: 25px;position: absolute;    right:30px; top: 60px;"alt="">   -->
+                        <div class="project">
+    
+                            <span><label class="proLable">工程名称：</label>{{engineering.name}}</span>
+                            <span><label class="proLable">所属机构：</label>{{engineering.agency_name}}</span>
+                            <span><label class="proLable">负责人：</label>{{engineering.staff_name}}</span>
+                            <span><label class="proLable">所在区域：</label>{{engineering.city}}</span>
+                            <span><label class="proLable">工程地址：</label>{{engineering.address}}</span>
+                            <span><label class="proLable">开工时间：</label>{{engineering.finish_date}}</span>
+                        </div>
+                    </div>
+                    <div class="pro2"  >
+                        <span class="proTitle"><span></span>项目信息</span>
+                        <div class="proOne" >
+                            <div v-for="(item,index) in project" :key="index">
+                                <span><label class="proLable">流水号：</label> {{ item.serial}}</span>
+                                <span><label class="proLable">项目名称：</label>{{ item.item_name}}</span>
+                                <span><label class="proLable">报警状态：</label> {{ item.alarm_state===0?'正常':'报警'}}</span>
+                                <span><label class="proLable">完工状态：</label>{{ item.status===0?'进行中':'完工'}}</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="pro3"  >
+                        <span class="proTitle"><span></span>监测内容</span>
+                        <div class="monitoring" >
+                            <div v-for="(ss, ids) in project">
+    
+                                <div v-for="(zz, idss) in ss.project_mon_type" :key="idss">
+                                    <span><label class="proLable"></label>{{zz.mon_type_name}}</span>
+                                    <span><label class="proLable"></label>{{zz.count}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div> 
+      
+
+        </div>
+    </div>
+
+
+
+
+
+
+</form>
+
+<!-- <script src = 'https://webapi.amap.com/maps?v=2.0&key=f5f56b976e6e46dbcb1f7582efa40db6&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.MarkerClusterer'></script> -->
+<script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<script type="text/javascript"
+    src="https://webapi.amap.com/maps?v=1.4.15&key=f2c9b1b2ff56a0f8ff940d5f814d2827&plugin=AMap.DistrictSearch,AMap.Autocomplete,Map3D,AMap.Scale,AMap.MarkerClusterer"></script>
+<script type="text/javascript" src='https://a.amap.com/jsapi_demos/static/citys.js'></script>
+<script src="//a.amap.com/jsapi_demos/static/china.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="/assets/js/highcharts.js"></script>
+<script src="/assets/js/exporting.js"></script>
+<script type="text/javascript">
+    (function (global, factory) {
+        typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+            typeof define === 'function' && define.amd ? define(factory) :
+                (global.FlashMarker = factory());
+    }(this, (function () {
+        'use strict';
+        var mapobj = null;
+
+
+        function CanvasLayer(options) {
+            this.options = options || {};
+            this.zIndex = this.options.zIndex || 0;
+            this._map = options.map;
+            this.show();
+        }
+
+        CanvasLayer.prototype.initialize = function () {
+            var map = this._map;
+            var canvas = this.canvas = document.createElement('canvas');
+            canvas.id = 'myCanvas';
+            var ctx = this.ctx = this.canvas.getContext('2d');
+            canvas.style.cssText = "position:absolute;" + "left:0;" + "top:0;" + "z-index:" + this.zIndex + ";";
+            this.adjustSize();
+            this.adjustRatio(ctx);
+            this.layer = new AMap.CustomLayer(canvas, {
+                canvas: canvas,
+                bounds: map.getBounds(),
+                zooms: [0, 22]
+            });
+            this.layer.setMap(map);
+            var that = this;
+            map.on('mapmove', function () {
+                that.adjustSize();
+            });
+            map.on('zoomchange', function () {
+                that.adjustSize();
+            });
+            // var bounds = map.getBounds();
+            // this.layer.setBounds(bounds);
+            return this.canvas;
+        };
+
+        CanvasLayer.prototype.adjustSize = function () {
+            var size = this._map.getSize();
+            var canvas = this.canvas;
+            canvas.width = size.width;
+            canvas.height = size.height;
+            canvas.style.width = canvas.width + "px";
+            canvas.style.height = canvas.height + "px";
+        };
+
+        CanvasLayer.prototype.adjustRatio = function (ctx) {
+            var backingStore = ctx.backingStorePixelRatio || ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
+            var pixelRatio = (window.devicePixelRatio || 1) / backingStore;
+            var canvasWidth = ctx.canvas.width;
+            var canvasHeight = ctx.canvas.height;
+            ctx.canvas.width = canvasWidth * pixelRatio;
+            ctx.canvas.height = canvasHeight * pixelRatio;
+            ctx.canvas.style.width = canvasWidth + 'px';
+            ctx.canvas.style.height = canvasHeight + 'px';
+            ctx.scale(pixelRatio, pixelRatio);
+        };
+
+        CanvasLayer.prototype.show = function () {
+            this.initialize();
+            if (!this.canvas) {
+                this.initialize();
+            }
+            this.canvas.style.display = 'block';
+        };
+
+        var global = typeof window === 'undefined' ? {} : window;
+
+        var requestAnimationFrame = global.requestAnimationFrame || global.mozRequestAnimationFrame || global.webkitRequestAnimationFrame || global.msRequestAnimationFrame || function (callback) {
+            return global.setTimeout(callback, 1000 / 60);
+        };
+
+        function Marker(opts) {
+            this.city = opts.name;
+            this.location = new AMap.LngLat(opts.lng, opts.lat);
+            this.color = opts.color;
+            this.type = opts.type || 'circle';
+            this.speed = opts.speed || 0.5;
+            this.size = 0;
+            this.max = opts.max || 20;
+        }
+
+        Marker.prototype.draw = function (context) {
+            context.save();
+            context.beginPath();
+            switch (this.type) {
+                case 'circle':
+                    this._drawCircle(context);
+                    break;
+                case 'ellipse':
+                    this._drawEllipse(context);
+                    break;
+                default:
+                    break;
+            }
+            context.closePath();
+            context.restore();
+
+            this.size += this.speed;
+            if (this.size > this.max) {
+                this.size = 0;
+            }
+        };
+
+        Marker.prototype._drawCircle = function (context) {
+            var pixel = this.pixel || mapobj.lngLatToContainer(this.location);
+            context.strokeStyle = this.color;
+            context.moveTo(pixel.x + pixel.size, pixel.y);
+            context.arc(pixel.x, pixel.y, this.size, 0, Math.PI * 2);
+            context.stroke();
+        };
+
+        Marker.prototype._drawEllipse = function (context) {
+            var pixel = this.pixel || mapobj.lngLatToContainer(this.location);
+            var x = pixel.x,
+                y = pixel.y,
+                w = this.size,
+                h = this.size / 2,
+                kappa = 0.5522848,
+
+                // control point offset horizontal
+                ox = w / 2 * kappa,
+
+                // control point offset vertical
+                oy = h / 2 * kappa,
+
+                // x-start
+                xs = x - w / 2,
+
+                // y-start
+                ys = y - h / 2,
+
+                // x-end
+                xe = x + w / 2,
+
+                // y-end
+                ye = y + h / 2;
+
+            context.strokeStyle = this.color;
+            context.moveTo(xs, y);
+            context.bezierCurveTo(xs, y - oy, x - ox, ys, x, ys);
+            context.bezierCurveTo(x + ox, ys, xe, y - oy, xe, y);
+            context.bezierCurveTo(xe, y + oy, x + ox, ye, x, ye);
+            context.bezierCurveTo(x - ox, ye, xs, y + oy, xs, y);
+            context.stroke();
+        };
+
+
+        function FlashMarker(map, dataset) {
+            mapobj = map;
+            var self = this;
+
+            var animationLayer = null,
+                width = map.getSize().width,
+                height = map.getSize().height,
+                animationFlag = true;
+            var markers = this.markers = [];
+
+            var render = function render() {
+                var markers = self.markers;
+                var animationCtx = animationLayer.canvas.getContext('2d');
+                if (!animationCtx) {
+                    return;
+                }
+
+                if (!animationFlag) {
+                    animationCtx.clearRect(0, 0, width, height);
+                    return;
+                }
+
+                animationCtx.fillStyle = 'rgba(0,0,0,0.95)';
+                var prev = animationCtx.globalCompositeOperation;
+                animationCtx.globalCompositeOperation = 'destination-in';
+                animationCtx.fillRect(0, 0, width, height);
+                animationCtx.globalCompositeOperation = prev;
+
+                for (var i = 0; i < markers.length; i++) {
+                    var marker = markers[i];
+                    marker.draw(animationCtx);
+                }
+            };
+
+
+            var mouseInteract = function mouseInteract() {
+                map.on('movestart', function () {
+                    animationFlag = false;
+                });
+
+                // map.on('click', function (e) {
+                //     console.log('111')
+                //     window.xiaohui()
+                //     window.render()
+                // });
+                // console.log(map)
+
+
+
+                map.on('moveend', function () {
+                    animationFlag = true;
+                    markers = [];
+                });
+
+                map.on('zoomstart', function () {
+                    animationFlag = false;
+                });
+
+                map.on('zoomend', function () {
+                    animationFlag = true;
+                    markers = [];
+                });
+            };
+
+            var addMarker = function addMarker() {
+                var markers = self.markers;
+                var dataset = self.dataset;
+                dataset.forEach(function (item, i) {
+                    var newMarker = new Marker(item);
+                    markers.push(newMarker);
+                });
+            };
+
+
+            var init = function init(map, dataset) {
+                self.dataset = dataset;
+
+                animationLayer = new CanvasLayer({
+                    map: map,
+                    update: render
+                });
+
+
+                mouseInteract();
+
+                addMarker();
+
+                (function drawFrame() {
+                    requestAnimationFrame(drawFrame);
+                    render();
+                })();
+            };
+
+            init(map, dataset);
+        }
+
+        FlashMarker.prototype.update = function (dataset) {
+            var self = this;
+            self.markers = [];
+            dataset.forEach(function (item, i) {
+                var newMarker = new Marker(item);
+                self.markers.push(newMarker);
+            });
+        };
+
+        return FlashMarker;
+
+    })));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

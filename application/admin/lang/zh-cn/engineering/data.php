@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'Id'            => 'ID',
+    'Upload_code'   => '监测唯一标识,组合方式： 采集仪编号#板卡序号#通道序号#传感器地址',
+    'Data1'         => '字段data1的名称',
+    'Data1_this'    => 'data1_this的名称',
+    'Data1_total'   => '字段data1_total的名称',
+    'Data1_rate'    => '字段data1_rate的名称',
+    'Param1'        => '临时使用字段',
+    'Alarm_state'   => '告警状态',
+    'Alarm_state 0' => '正常',
+    'Alarm_state 1' => '预警',
+    'Alarm_state 2' => '报警',
+    'Alarm_state 3' => '控制',
+    'Createtime'    => '创建时间',
+    'Dev_id'        => '采集仪的设备编号',
+    'Volt'          => '电压',
+    'Record_time'   => '采集时间',
+    'Poinr_name'    => '测点名称',
+    'Mon_type'      => '监测类型',
+    'Depth'         => '深度(m)',
+    'Data'          => '原始数据',
+    'Select All'    => '全选',
+    'Deselect All'  => '重置',
+];
